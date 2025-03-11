@@ -178,7 +178,7 @@
                     <div class="card">
                         <h1 >MCP</h1>
                         <p>Modern Computational Physics </p>
-                        <img src="" alt="MCP">
+                        <img src="/images/mcp.jpg" alt="MCP">
                     </div>
                 </a>
 
@@ -188,7 +188,7 @@
                     <div style="background: black;"  class="card" >
                         <h1 style="color: white;">CASA</h1>
                         <p style="color: white;">Calculus And Statical Analysis </p>
-                        <img src="/images/CASA.jpg" alt="CASA">
+                        <img src="/images/casa2.avif" alt="CASA">
                     </div>
                 </a>
                 
@@ -198,6 +198,14 @@
             </div>
         </div>
         </section>
+
+
+
+
+
+
+
+
 
         <section class="contact" id="contact">
             <div class="contact-container">
@@ -220,10 +228,179 @@
 
 
 
+
         <div class="text">
             <h1>Your Notes, Your Way - Organized and Always Accessible .</h1>
         </div>
         
+
+
+
+
+
+
+
+        <div class="mascot-container">
+            <div class="mascot">
+              <img src="/images/mascot.jpg" alt="Campus Mascot">
+            </div>
+            <div class="chat-container">
+              <div class="chat-header">EduChat</div>
+              <div class="chat-box" id="chatBox">
+                <div class="bot-message">Hi! How can I help you?</div>
+              </div>
+              <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type a message...">
+                <button onclick="sendMessage()">Send</button>
+              </div>
+            </div>
+          </div>
+        
+        <style>
+            .mascot-container {
+              display: flex;
+              align-items: center;
+              gap: 20px;
+              max-width: 1200px;
+              width: 100%;
+              padding: 20px;
+            }
+            .mascot {
+              flex: 1;
+              text-align: center;
+            }
+        
+            .mascot img {
+              max-width: 60%;
+              height: auto;
+            }
+            .chat-container {
+              flex: 1;
+              max-width: 350px;
+              height: 500px;
+              background: white;
+              border-radius: 15px;
+              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+              display: flex;
+              flex-direction: column;
+              overflow: hidden;
+            }
+        
+            .chat-header {
+              background: #007bff;
+              color: white;
+              padding: 15px;
+              text-align: center;
+              font-weight: bold;
+            }
+        
+            .chat-box {
+              flex: 1;
+              padding: 10px;
+              overflow-y: auto;
+              display: flex;
+              flex-direction: column;
+            }
+        
+            .user-message, .bot-message {
+              padding: 8px 12px;
+              border-radius: 10px;
+              margin: 5px;
+              max-width: 70%;
+            }
+        
+            .user-message {
+              background: #007bff;
+              color: white;
+              align-self: flex-end;
+            }
+        
+            .bot-message {
+              background: #e0e0e0;
+              color: black;
+              align-self: flex-start;
+            }
+        
+            .chat-input {
+              display: flex;
+              padding: 10px;
+              background: white;
+              border-top: 1px solid #ddd;
+            }
+        
+            .chat-input input {
+              flex: 1;
+              padding: 8px;
+              border: none;
+              border-radius: 5px;
+              outline: none;
+            }
+        
+            .chat-input button {
+              margin-left: 10px;
+              padding: 8px 12px;
+              background: #007bff;
+              color: white;
+              border: none;
+              border-radius: 5px;
+              cursor: pointer;
+            }
+            @media (min-width: 1024px) { 
+                .mascot img {
+                max-width: 50%%; 
+            }
+            }
+            @media (max-width: 768px) {
+              .container {
+                flex-direction: column;
+                align-items: center;
+              }
+        
+              .mascot {
+                order: -1; 
+                margin-bottom: 20px;
+              }
+        
+              .chat-container {
+                max-width: 100%;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <script>
+            function sendMessage() {
+              let userInput = document.getElementById("userInput").value;
+              let chatBox = document.getElementById("chatBox");
+              if (userInput.trim() === "") return;
+        
+              let userMessage = `<div class='user-message'>${userInput}</div>`;
+              chatBox.innerHTML += userMessage;
+              document.getElementById("userInput").value = "";
+        
+              setTimeout(() => {
+                let botReply = `<div class='bot-message'>${getBotResponse(userInput)}</div>`;
+                chatBox.innerHTML += botReply;
+                chatBox.scrollTop = chatBox.scrollHeight;
+              }, 1000);
+            }
+        
+            function getBotResponse(input) {
+              let responses = {
+                "hello": "Hello! How can I assist you today?",
+                "courses": "We offer various courses including AI, Web Dev, and more!",
+                "events": "Upcoming events are listed on the Campus Portal.",
+                "bye": "Goodbye! Have a great day!"
+              };
+              return responses[input.toLowerCase()] || "I'm not sure. Try asking something else!";
+            }
+          </script>
+
+
+
+
+
+
 
 
 
