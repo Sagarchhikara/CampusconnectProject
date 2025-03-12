@@ -448,7 +448,7 @@
   height: 100%;
   background: #4caf50;
   border-radius: 5px;
-  width: 50%; /* Dynamically updated by JavaScript */
+  width: 50%;
 }
 
 .calendar {
@@ -479,65 +479,70 @@
 }
 </style>
 <script>
-  // Sample data for attended dates
-const attendedDates = ["2023-10-01", "2023-10-02", "2023-10-03", "2023-10-04", "2023-10-05"];
-
-// Get current and longest streak
-const currentStreak = attendedDates.length;
-const longestStreak = 10; // Example value
-const totalDays = attendedDates.length;
-
-// Update streak details
-document.getElementById("current-streak").textContent = currentStreak;
-document.getElementById("longest-streak").textContent = longestStreak;
-document.getElementById("total-days").textContent = totalDays;
-
-// Update progress bar
-const progressBar = document.getElementById("streak-progress");
-progressBar.style.width = `${(currentStreak / longestStreak) * 100}%`;
-
-// Update motivational message
-const motivationalMessage = document.getElementById("motivational-message");
-if (currentStreak >= longestStreak) {
-  motivationalMessage.textContent = "Amazing! You've matched your longest streak!";
-} else if (currentStreak >= longestStreak / 2) {
-  motivationalMessage.textContent = "You're halfway there! Keep going!";
-} else {
-  motivationalMessage.textContent = "Keep it up! Every day counts!";
-}
-
-// Render calendar
-const calendar = document.getElementById("calendar");
-const today = new Date();
-const year = today.getFullYear();
-const month = today.getMonth();
-
-// Get the number of days in the month
-const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-// Get the first day of the month
-const firstDay = new Date(year, month, 1).getDay();
-
-// Create calendar days
-for (let i = 0; i < firstDay; i++) {
-  const emptyDay = document.createElement("div");
-  calendar.appendChild(emptyDay);
-}
-
-for (let day = 1; day <= daysInMonth; day++) {
-  const calendarDay = document.createElement("div");
-  calendarDay.classList.add("calendar-day");
-  calendarDay.textContent = day;
-
-  // Check if the day is attended
-  const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-  if (attendedDates.includes(dateString)) {
-    calendarDay.classList.add("attended");
-  }
-
-  calendar.appendChild(calendarDay);
-}
-</script>
+  document.addEventListener("DOMContentLoaded", function () {
+      // Sample data for attended dates (use actual dates of the current month)
+      const attendedDates = ["2025-03-01", "2025-03-02", "2025-03-03", "2025-03-05", "2025-03-08"];
+  
+      // Get current and longest streak
+      const currentStreak = attendedDates.length;
+      const longestStreak = 10; // Example value
+      const totalDays = attendedDates.length;
+  
+      // Update streak details
+      document.getElementById("current-streak").textContent = currentStreak;
+      document.getElementById("longest-streak").textContent = longestStreak;
+      document.getElementById("total-days").textContent = totalDays;
+  
+      // Update progress bar
+      const progressBar = document.getElementById("streak-progress");
+      progressBar.style.width = `${(currentStreak / longestStreak) * 100}%`;
+  
+      // Update motivational message
+      const motivationalMessage = document.getElementById("motivational-message");
+      if (currentStreak >= longestStreak) {
+          motivationalMessage.textContent = "Amazing! You've matched your longest streak!";
+      } else if (currentStreak >= longestStreak / 2) {
+          motivationalMessage.textContent = "You're halfway there! Keep going!";
+      } else {
+          motivationalMessage.textContent = "Keep it up! Every day counts!";
+      }
+  
+      // Render calendar
+      const calendar = document.getElementById("calendar");
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth();
+  
+      // Get the number of days in the month
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+  
+      // Get the first day of the month
+      const firstDay = new Date(year, month, 1).getDay();
+  
+      // Create empty spaces for the first week
+      for (let i = 0; i < firstDay; i++) {
+          const emptyDay = document.createElement("div");
+          emptyDay.classList.add("calendar-day");
+          emptyDay.style.visibility = "hidden"; 
+          calendar.appendChild(emptyDay);
+      }
+  
+      for (let day = 1; day <= daysInMonth; day++) {
+          const calendarDay = document.createElement("div");
+          calendarDay.classList.add("calendar-day");
+          calendarDay.textContent = day;
+  
+          // Check if the day is attended
+          const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+          if (attendedDates.includes(dateString)) {
+              calendarDay.classList.add("attended");
+          }
+  
+          calendar.appendChild(calendarDay);
+      }
+  });
+  </script>
+  
 
 
 
