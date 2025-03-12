@@ -393,159 +393,6 @@
 
 
 
-
-<div class="streak-container">
-  <div class="streak-details">
-    <h2>Student Streak Tracker</h2>
-    <p><strong>Student Name:</strong> John Doe</p>
-    <p><strong>Class/ID:</strong> Math 101 / 12345</p>
-    <p><strong>Current Streak:</strong> <span id="current-streak">5</span> days</p>
-    <p><strong>Longest Streak:</strong> <span id="longest-streak">10</span> days</p>
-    <p><strong>Total Days Attended:</strong> <span id="total-days">25</span> days</p>
-    <div class="progress-bar">
-      <div class="progress" id="streak-progress"></div>
-    </div>
-    <p id="motivational-message">Keep it up! You're on a roll!</p>
-  </div>
-
-  <div class="calendar">
-    <h3>Attendance Calendar</h3>
-    <div id="calendar"></div>
-  </div>
-</div>
-<style>
-  
-.streak-container {
-  display: flex;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 0 auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.streak-details {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.streak-details h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 10px;
-  background: #e0e0e0;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-.progress {
-  height: 100%;
-  background: #4caf50;
-  border-radius: 5px;
-  width: 50%;
-}
-
-.calendar {
-  flex: 1;
-  background: #f9f9f9;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#calendar {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-}
-
-.calendar-day {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background: #fff;
-}
-
-.calendar-day.attended {
-  background: #4caf50;
-  color: #fff;
-}
-</style>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-      // Sample data for attended dates (use actual dates of the current month)
-      const attendedDates = ["2025-03-01", "2025-03-02", "2025-03-03", "2025-03-05", "2025-03-08"];
-  
-      // Get current and longest streak
-      const currentStreak = attendedDates.length;
-      const longestStreak = 10; // Example value
-      const totalDays = attendedDates.length;
-  
-      // Update streak details
-      document.getElementById("current-streak").textContent = currentStreak;
-      document.getElementById("longest-streak").textContent = longestStreak;
-      document.getElementById("total-days").textContent = totalDays;
-  
-      // Update progress bar
-      const progressBar = document.getElementById("streak-progress");
-      progressBar.style.width = `${(currentStreak / longestStreak) * 100}%`;
-  
-      // Update motivational message
-      const motivationalMessage = document.getElementById("motivational-message");
-      if (currentStreak >= longestStreak) {
-          motivationalMessage.textContent = "Amazing! You've matched your longest streak!";
-      } else if (currentStreak >= longestStreak / 2) {
-          motivationalMessage.textContent = "You're halfway there! Keep going!";
-      } else {
-          motivationalMessage.textContent = "Keep it up! Every day counts!";
-      }
-  
-      // Render calendar
-      const calendar = document.getElementById("calendar");
-      const today = new Date();
-      const year = today.getFullYear();
-      const month = today.getMonth();
-  
-      // Get the number of days in the month
-      const daysInMonth = new Date(year, month + 1, 0).getDate();
-  
-      // Get the first day of the month
-      const firstDay = new Date(year, month, 1).getDay();
-  
-      // Create empty spaces for the first week
-      for (let i = 0; i < firstDay; i++) {
-          const emptyDay = document.createElement("div");
-          emptyDay.classList.add("calendar-day");
-          emptyDay.style.visibility = "hidden"; 
-          calendar.appendChild(emptyDay);
-      }
-  
-      for (let day = 1; day <= daysInMonth; day++) {
-          const calendarDay = document.createElement("div");
-          calendarDay.classList.add("calendar-day");
-          calendarDay.textContent = day;
-  
-          // Check if the day is attended
-          const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-          if (attendedDates.includes(dateString)) {
-              calendarDay.classList.add("attended");
-          }
-  
-          calendar.appendChild(calendarDay);
-      }
-  });
-  </script>
-  
-
-
-
 <section class="contact" id="contact">
   <div class="contact-container">
       <div class="contact-info">
@@ -557,6 +404,7 @@
           </a></p>
       </div>
       <form class="contact-form">
+        <h2>FAQ Corner</h2>
           <input type="text" placeholder="Your Name" required>
           <input type="email" placeholder="Your Email" required>
           <textarea placeholder="Your Message" required></textarea>
@@ -564,6 +412,11 @@
       </form>
   </div>
 </section>
+
+
+
+
+
 
 
 
@@ -685,7 +538,126 @@
   font-size: 1rem;
   color: #676767;
 }
-          </style>
+  </style>
+
+
+
+
+
+
+
+<section class="resources-section">
+  <h2>Essential Tools for Aspiring Programmers</h2>
+  <div class="logo-scroll-container">
+      <div class="logo-scroll-wrapper">
+          <div class="logo-scroll">
+              <a href="https://leetcode.com" target="_blank">
+                  <img src="/images/leetcode.webp" alt="LeetCode" class="circular-logo">
+              </a>
+              <a href="https://github.com" target="_blank">
+                  <img src="/images/github.webp" alt="GitHub" class="circular-logo">
+              </a>
+              <a href="https://stackoverflow.com" target="_blank">
+                  <img src="/images/stack_overflow.webp" alt="Stack Overflow" class="circular-logo">
+              </a>
+              <a href="https://www.geeksforgeeks.org" target="_blank">
+                  <img src="/images/gfg.svg" alt="GeeksforGeeks" class="circular-logo">
+              </a>
+              <a href="https://www.hackerrank.com" target="_blank">
+                  <img src="/images/hackerrank.webp" alt="HackerRank" class="circular-logo">
+              </a>
+              <a href="https://www.kaggle.com" target="_blank">
+                  <img src="/images/kaggle.webp" alt="Kaggle" class="circular-logo">
+              </a>
+              <a href="https://www.freecodecamp.org" target="_blank">
+                  <img src="/images/free_code_Camp.webp" alt="freeCodeCamp" class="circular-logo">
+              </a>
+          </div>
+      </div>
+  </div>
+</section>
+<style>
+ .resources-section {
+    padding: 20px;
+    margin: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.resources-section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.logo-scroll-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.logo-scroll-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    padding: 10px 0; 
+}
+
+.logo-scroll {
+    display: inline-block;
+    text-align: center; 
+}
+
+.logo-scroll a {
+    display: inline-block;
+    margin: 0 15px; 
+    text-decoration: none;
+}
+
+.circular-logo {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%; 
+    object-fit: cover; 
+    transition: transform 0.3s ease;
+}
+
+.circular-logo:hover {
+    transform: scale(1.04); 
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <div class="menu-items">
