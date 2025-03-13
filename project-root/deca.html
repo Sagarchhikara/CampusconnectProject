@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DECA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <style>
+        .subject-section {
+            padding: 40px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1,
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        p,
+        ul {
+            font-size: 16px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        ul li a:hover {
+            text-decoration: underline;
+            color: rgb(128, 126, 135);
+        }
+
+        #subject-introduction {
+            padding-top: 80px;
+        }
+
+        .video-container {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            /* Enables horizontal scrolling */
+            padding: 10px;
+            scroll-behavior: smooth;
+        }
+
+        .video-item {
+            min-width: 320px;
+            /* Adjust width as needed */
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .video-item iframe {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+        }
+
+        .video-container::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .video-container::-webkit-scrollbar-thumb {
+            background: #5f6060;
+            border-radius: 10px;
+        }
+
+        .video-container::-webkit-scrollbar-track {
+            background: #ddd;
+        }
+
+        /* Added styles for notes */
+        #notes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .note {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 280px;
+            text-align: left;
+        }
+
+        .note h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .note p {
+            color: #666;
+        }
+
+        .note button {
+            background-color: #ff5555;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .note button:hover {
+            background-color: #ff3333;
+        }
+
+        /* Form styling */
+        #note-form {
+            max-width: 500px;
+            margin: 20px auto 40px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #note-form input,
+        #note-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        #note-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #note-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #note-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500;"><i class='bx bxl-redux'></i>
+            </h2>
+        </div>
+        <ul id="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#notes">Notes</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">Download</a></li>
+            <li class="dropdown">
+                <a href="#">Login</a>
+                <div class="login-dropdown">
+                    <form id="login-form">
+                        <label for="username">Roll number:</label>
+                        <input type="text" id="username" placeholder="Roll number">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Password">
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+            </li>
+            <img class="cross" src="images/close-116-512.png" alt="cross">
+        </ul>
+        <div class="nav-icons">
+            <img class="menuopen" src="images/hamburger-menu-5.png" alt="menu">
+        </div>
+    </div>
+
+    <section id="subject-introduction" class="subject-section" style="background: black; color: #fff;">
+        <div class="container">
+            <h1>Digital Electronics and Computer Architecture</h1>
+            <p>Digital Electronics and Computer Architecture (DECA) focuses on the design and functioning of digital
+                circuits and computing systems. It covers topics like logic gates, microprocessors, memory architecture,
+                and data processing. Understanding DECA is essential for building efficient hardware and optimizing
+                software performance.</p>
+        </div>
+    </section>
+
+    <section id="notes" class="subject-section">
+        <div class="container">
+            <h2>Handwritten Notes</h2>
+            <div id="notes-container"></div>
+        </div>
+    </section>
+
+    <form id="note-form" enctype="multipart/form-data">
+        <h3>Add New Note</h3>
+        <input type="text" id="note-title" placeholder="Enter Title" required>
+        <textarea id="note-content" placeholder="Enter Content" required></textarea>
+        <input type="file" id="note-pdf" accept="application/pdf">
+        <button type="submit">Add Note</button>
+    </form>
+    
+
+    <section id="video-lectures" class="subject-section">
+        <div class="container">
+            <h2>Video Lectures</h2>
+            <div class="video-container">
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/DBTna2ydmC0"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <p>Basics of Digital Electronics</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/47u7b2yh7s8"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <p> Logic Gates & Combinational Circuits</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/fLN1YOmuAr8"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <p>Sequential Circuits</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/HEjPop-aK_w"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <p>Computer Architecture Basics</p>
+                </div>
+                <div class="video-item">
+                    <iframe src="https://www.youtube.com/embed/PM728r4oGcE"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                    <p>Input & Output Systems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="deca-additional-resources" class="subject-section" style="background: #000; color: white;">
+        <div class="container">
+            <h2>Additional Resources - Digital Electronics and Computer Architecture</h2>
+            <ul>
+                <li><a href="https://www.geeksforgeeks.org/digital-electronics-logic-design-tutorials/"
+                        target="_blank">GeeksforGeeks - Digital Electronics</a></li>
+                <li><a href="https://www.tutorialspoint.com/digital_electronics/index.htm"
+                        target="_blank">TutorialsPoint - Digital Electronics</a></li>
+                <li><a href="https://nptel.ac.in/courses/117/106/117106086/" target="_blank">NPTEL - Digital Circuits
+                        Course</a></li>
+                <li><a href="https://www.coursera.org/learn/comparch" target="_blank">Coursera - Computer
+                        Architecture</a></li>
+                <li><a href="https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-004-computation-structures-fall-2017/"
+                        target="_blank">MIT OpenCourseWare - Computation Structures</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="menu-items">
+        <div class="menu-list">
+            <ul class="footer-column">
+                <li>
+                    <h5>Quick Links</h5>
+                </li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#notes">Notes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="footer-column">
+                <li>
+                    <h5>Subjects</h5>
+                </li>
+                <li><a href="#">C Programming</a></li>
+                <li><a href="#">Operating System</a></li>
+                <li><a href="#">Source Code Management</a></li>
+                <li><a href="#">DECA</a></li>
+                <li><a href="#">DE & T</a></li>
+            </ul>
+            <ul class="footer-column">
+                <li>
+                    <h5>Follow Us</h5>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/yourprofile" target="_blank">
+                        <i class='bx bxl-instagram'></i> Instagram
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/yourprofile" target="_blank">
+                        <i class='bx bxl-twitter'></i> Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://wa.me/yourphonenumber" target="_blank">
+                        <i class='bx bxl-whatsapp'></i> WhatsApp
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/yourprofile" target="_blank">
+                        <i class='bx bxl-github'></i> GitHub
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p>© 2025 Notes Manager. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5001/api' 
+            : 'https://your-production-api.com/api'; // Change to your production API URL
+
+        // Navigation menu toggle
+        let nav_list = document.getElementById('nav-list');
+        let openMenu = document.querySelector('.menuopen');
+        let cross = document.querySelector('.cross');
+        
+        openMenu.addEventListener('click', () => {
+            nav_list.style.opacity = '100%';
+            openMenu.style.display = 'none';
+        });
+        
+        cross.addEventListener('click', () => {
+            nav_list.style.opacity = '0%';
+            setTimeout(() => {
+                openMenu.style.display = 'block';
+            }, 400);
+        });
+
+        // Login form handling
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Add your login logic here
+            console.log('Login attempt:', username);
+            alert('Login functionality will be implemented soon.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Notes functionality
+        async function fetchNotes() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/notes`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                const notes = await response.json();
+                let notesContainer = document.getElementById("notes-container");
+                notesContainer.innerHTML = ""; // Clear existing notes
+
+                if (notes.length === 0) {
+                    notesContainer.innerHTML = "<p>No notes found. Add your first note!</p>";
+                    return;
+                }
+
+                notes.forEach((note) => {
+                    let noteElement = document.createElement("div");
+                    noteElement.className = "note";
+                    noteElement.innerHTML = `
+                        <h3>${note.title}</h3>
+                        <p>${note.content}</p>
+                        <button onclick="deleteNote('${note._id}')">Delete</button>
+                    `;
+                    notesContainer.appendChild(noteElement);
+                });
+            } catch (error) {
+                console.error("Error fetching notes:", error);
+                document.getElementById("notes-container").innerHTML = 
+                    `<p>Unable to load notes. Please check your connection or try again later.</p>
+                     <p>Error: ${error.message}</p>`;
+            }
+        }
+
+        async function deleteNote(noteId) {
+            if (!confirm("Are you sure you want to delete this note?")) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/notes/${noteId}`, {
+                    method: "DELETE",
+                    headers: {
+                        // Add authentication header if needed
+                        // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+
+                if (response.ok) {
+                    console.log("Note deleted successfully!");
+                    fetchNotes(); // Refresh list after deletion
+                } else {
+                    throw new Error(`Failed to delete note. Status: ${response.status}`);
+                }
+            } catch (error) {
+                console.error("Error deleting note:", error);
+                alert("Failed to delete note: " + error.message);
+            }
+        }
+
+        // Note form handling
+        document.getElementById('note-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const title = document.getElementById('note-title').value;
+            const content = document.getElementById('note-content').value;
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/notes`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // Add authentication header if needed
+                        // 'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    },
+                    body: JSON.stringify({ title, content })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                console.log('Note added successfully!');
+                this.reset(); // Clear form
+                fetchNotes(); // Refresh notes list
+            } catch (error) {
+                console.error('Error adding note:', error);
+                alert('Failed to add note: ' + error.message);
+            }
+        });
+
+        // Initialize page - load notes
+        document.addEventListener('DOMContentLoaded', function() {
+            fetchNotes();
+        });
+    </script>
+    <script src="js/deca.js"></script>
+
+</body>
+
+</html>
