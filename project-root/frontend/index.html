@@ -386,7 +386,40 @@
             console.error('Signup Error:', err);
             alert('Something went wrong. Please try again.');
         }
-    });
+    }); 
+    const form = document.getElementById('signupForm');
+
+form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:5000/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            document.getElementById('response').innerText = `✅ Success: ${data.message}`;
+            console.log('Signup success:', data);
+            // Redirect to login page or dashboard if needed
+            // window.location.href = '/dashboard.html';
+        } else {
+            document.getElementById('response').innerText = `❌ Error: ${data.error || 'Signup failed'}`;
+            console.error('Signup error:', data);
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        document.getElementById('response').innerText = `❌ Network Error: ${error.message}`;
+    }
+});
+
 </script>
 
     
