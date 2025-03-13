@@ -57,7 +57,6 @@
             <li><a href="/index.html">Home</a></li>
             <li><a href="#notes">Notes</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#">Download</a></li>
             <li class="dropdown">
                 <a href="#">Login</a>
                 <div class="login-dropdown">
@@ -83,7 +82,7 @@
 
     <section id="subject-introduction" class="subject-section" style="background: black; color: #fff;">
         <div class="container">
-            <h1>Introduction to C Programming</h1>
+            <h1 style="color: white;">Introduction to C Programming</h1>
             <h2><i class='bx bx-laptop'></i></h2>
             <p>C Programming is a powerful general-purpose language that is widely used for system and application software, embedded systems, and more. It is known for its efficiency, flexibility, and portability, making it a fundamental language for programmers.</p>
         </div>
@@ -220,6 +219,120 @@
 
 
 
+    <div class="quiz-container">
+        <h1>C Programming Self-Assessment</h1>
+        <div class="quiz">
+            <ul class="topics-list">
+                <li><a href="#" target="_blank">Introduction to C Programming</a></li>
+                <li><a href="#" target="_blank">Data Types and Variables</a></li>
+                <li><a href="#" target="_blank">Operators and Expressions</a></li>
+                <li><a href="#" target="_blank">Control Flow</a></li>
+                <li><a href="#" target="_blank">Functions in C / Arrays / Strings</a></li>
+                <li><a href="#" target="_blank">Pointers</a></li>
+                <li><a href="#" target="_blank">Structures and Unions</a></li>
+                <li><a href="#" target="_blank">File Handling in C</a></li>
+                <li><a href="#" target="_blank">Advanced Topics</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <style>
+        .quiz-container {
+            width: 100%;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 20px;
+            background: white;
+            text-align: center;
+        }
+    
+        .quiz-container h1 {
+            color: #333;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+    
+        .quiz {
+            display: flex;
+            gap: 15px;
+            padding: 10px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+    
+        .topics-list {
+            display: flex;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        .topics-list li {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
+            padding: 5px;
+        }
+    
+        .topics-list a {
+            display: block;
+            min-width: 200px;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: background 0.3s ease;
+            font-size: 16px;
+        }
+    
+        .topics-list a:hover {
+            background-color: #0056b3;
+        }
+    
+        @media (max-width: 768px) {
+            .quiz-container h1 {
+                font-size: 20px;
+            }
+    
+            .topics-list a {
+                padding: 10px;
+                font-size: 14px;
+                min-width: 180px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .quiz-container {
+                padding: 15px;
+            }
+    
+            .quiz-container h1 {
+                font-size: 18px;
+            }
+    
+            .topics-list a {
+                padding: 8px;
+                font-size: 12px;
+                min-width: 160px;
+            }
+        }
+    </style>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -293,7 +406,6 @@
     </div>
 
 
-
     <script>
         let nav_list = document.getElementById('nav-list')
         let openMenu = document.querySelector('.menuopen')
@@ -313,4 +425,3 @@
 
 </body>
 </html>
-C:\Users\ARNAV GUPTA\OneDrive\Documents\GitHub\CampusconnectProject\c_programming.html
