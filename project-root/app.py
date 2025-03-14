@@ -133,7 +133,9 @@ def page_not_found(e):
 
 with app.app_context():
     db.create_all()
-CORS(app)
+    
+CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins for now
+
 app.config['WTF_CSRF_ENABLED'] = False
 
 if __name__ == '__main__':
