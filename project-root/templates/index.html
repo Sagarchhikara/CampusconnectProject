@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Connect</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
@@ -24,19 +24,19 @@
                 <li class="dropdown">
                     <a href="#">Login</a>
                     <div class="login-dropdown">
-                        <form>
+                        <form action="{{ url_for('login') }}" method="POST">
                             <label for="username">Roll number:</label>
-                            <input type="text" id="username" placeholder="Roll number">
-                            <label for="password">Passworrd:</label>
-                            <input type="password" id="password" placeholder="Password">
+                            <input type="text" id="username" name="username" placeholder="Roll number">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Password">
                             <button type="submit">Login</button>
                         </form>
                     </div>
                 </li>
-                <img class="cross" src="/images/close-116-512.png" alt="cross">
+                
             </ul>
             <div class="nav-icons">
-                <img class="menuopen" src="/images/hamburger-menu-5.png" alt="menu">
+                <img class="menuopen" src="{{ url_for('static', filename='images/hamburger-menu-5.png') }}" alt="menu">
             </div>
         </div>
         <div class="navtext">
@@ -85,16 +85,18 @@
                 let introText = document.querySelector(".fullscreen-text");
                 let notesSection = document.querySelector("#notes");
 
-                let scrollPosition = window.scrollY;
-                let introHeight = introText.offsetHeight;
-                let notesPosition = notesSection.offsetTop;
+                if (introText && notesSection) {
+                    let scrollPosition = window.scrollY;
+                    let introHeight = introText.offsetHeight;
+                    let notesPosition = notesSection.offsetTop;
 
-                if (scrollPosition < notesPosition - introHeight) {
-                    let scaleFactor = 1 + scrollPosition / 600;
-                    let translateY = scrollPosition / 7;
-                    introText.style.transform = `scale(${Math.min(scaleFactor, 2)}) translateY(${translateY}px)`;
-                } else {
-                    introText.style.transform = "scale(2) translateY(80px)";
+                    if (scrollPosition < notesPosition - introHeight) {
+                        let scaleFactor = 1 + scrollPosition / 600;
+                        let translateY = scrollPosition / 7;
+                        introText.style.transform = `scale(${Math.min(scaleFactor, 2)}) translateY(${translateY}px)`;
+                    } else {
+                        introText.style.transform = "scale(2) translateY(80px)";
+                    }
                 }
             });
         </script>
@@ -106,126 +108,93 @@
                 <h1>Stay organized with the latest updates to your notes management system!</h1>
                 <div class="cards">
 
-
-
-                    <a href="/c_programming.html">
+                    <a href="{{ url_for('c_programming') }}">
                         <div style="background: black;" class="card">
                             <h1 style="color: white;">C Programming</h1>
                             <p style="color: white;">Master the fundamentals of C – the foundation of modern
                                 programming!</p>
-                            <img src="/images/c.jpg" alt="C programming">
+                            <img src="{{ url_for('static', filename='images/c.jpg') }}" alt="C programming">
                         </div>
                     </a>
 
-
-
-                    <a href="/operating_system.html">
+                    <a href="{{ url_for('operating_system') }}">
                         <div class="card">
                             <h1>Operating System </h1>
                             <p>Master the core concepts of multitasking, memory management, and process scheduling in
                                 Operating Systems</p>
-                            <img src="/images/operating system.jpg" alt="operating system">
+                            <img src="{{ url_for('static', filename='images/operating system.jpg') }}" alt="operating system">
                         </div>
                     </a>
 
-
-
-                    <a href="/scm.html">
+                    <a href="{{ url_for('scm') }}">
                         <div style="background: black;" class="card">
                             <h1 style="color: white;">SCM</h1>
                             <p style="color: white;">Efficiently track, manage, and collaborate on code with powerful
                                 version control systems</p>
-                            <img style="height: 180px;" src="/images/git.jpg" alt="scm">
+                            <img style="height: 180px;" src="{{ url_for('static', filename='images/git.jpg') }}" alt="scm">
                         </div>
                     </a>
 
-
-
-                    <a href="/deca.html">
+                    <a href="{{ url_for('deca') }}">
                         <div class="card">
                             <h1>DECA</h1>
                             <p>Unraveling the mysteries of the universe, one equation at a time</p>
-                            <img src="/images/deca1.jpg" alt="DECA">
+                            <img src="{{ url_for('static', filename='images/deca1.jpg') }}" alt="DECA">
                         </div>
                     </a>
 
-
-
-                    <a href="/dent.html">
+                    <a href="{{ url_for('dent') }}">
                         <div class="card">
                             <h1>DE & T</h1>
                             <p>Differential equations and transformations </p>
-                            <img src="/images/DENT.jpg" alt="de%t">
+                            <img src="{{ url_for('static', filename='images/DENT.jpg') }}" alt="de%t">
                         </div>
                     </a>
 
-
-
-                    <a href="/python.html">
+                    <a href="{{ url_for('python') }}">
                         <div class="card">
                             <h1>Python</h1>
                             <p>Problem Solving Using Python Programming</p>
-                            <img src="/images/python.png" alt="Python">
+                            <img src="{{ url_for('static', filename='images/python.png') }}" alt="Python">
                         </div>
                     </a>
 
-
-
-                    <a href="/frontend_engineering.html">
+                    <a href="{{ url_for('frontend_engineering') }}">
                         <div style="background: black;" class="card">
                             <h1 style="color: white;">Frontend Engineering</h1>
                             <p style="color: white;">Bringing designs to life with the power of HTML, CSS, and
                                 JavaScript!</p>
-                            <img src="/images/fee.jpg" alt="FEE">
+                            <img src="{{ url_for('static', filename='images/fee.jpg') }}" alt="FEE">
                         </div>
                     </a>
 
-
-
-                    <a href="/mcp.html">
+                    <a href="{{ url_for('mcp') }}">
                         <div class="card">
                             <h1>MCP</h1>
                             <p>Modern Computational Physics </p>
-                            <img src="/images/mcp.jpg" alt="MCP">
+                            <img src="{{ url_for('static', filename='images/mcp.jpg') }}" alt="MCP">
                         </div>
                     </a>
 
-
-
-                    <a href="/casa.html">
+                    <a href="{{ url_for('casa') }}">
                         <div style="background: black;" class="card">
                             <h1 style="color: white;">CASA</h1>
                             <p style="color: white;">Calculus And Statical Analysis </p>
-                            <img src="/images/casa2.avif" alt="CASA">
+                            <img src="{{ url_for('static', filename='images/casa2.avif') }}" alt="CASA">
                         </div>
                     </a>
-
-
-
 
                 </div>
             </div>
         </section>
 
-
-
-
-
-
         <div class="text">
             <h1>Your Notes, Your Way - Organized and Always Accessible .</h1>
         </div>
 
-
-
-
-
-
-
-
         <div class="mascot-container">
             <div class="mascot">
-                <img src="/images/mascot.jpg" alt="Campus Mascot">
+                <img src="{{ url_for('static', filename='images/mascot.jpg') }}" alt="Campus Mascot">
             </div>
             <div class="chat-container">
                 <div class="chat-header">EduChat</div>
@@ -359,78 +328,76 @@
                 }
             }
         </style>
-        </head>
 
-        <body>
+        <script>
+            function sendMessage() {
+                let userInput = document.getElementById("userInput").value;
+                let chatBox = document.getElementById("chatBox");
+                if (userInput.trim() === "") return;
 
+                let userMessage = `<div class='user-message'>${userInput}</div>`;
+                chatBox.innerHTML += userMessage;
+                document.getElementById("userInput").value = "";
 
-            <script>
-                function sendMessage() {
-                    let userInput = document.getElementById("userInput").value;
-                    let chatBox = document.getElementById("chatBox");
-                    if (userInput.trim() === "") return;
+                setTimeout(() => {
+                    let botReply = `<div class='bot-message'>${getBotResponse(userInput)}</div>`;
+                    chatBox.innerHTML += botReply;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 1000);
+            }
 
-                    let userMessage = `<div class='user-message'>${userInput}</div>`;
-                    chatBox.innerHTML += userMessage;
-                    document.getElementById("userInput").value = "";
-
-                    setTimeout(() => {
-                        let botReply = `<div class='bot-message'>${getBotResponse(userInput)}</div>`;
-                        chatBox.innerHTML += botReply;
-                        chatBox.scrollTop = chatBox.scrollHeight;
-                    }, 1000);
-                }
-
-                function getBotResponse(input) {
-                    let responses = {
-                        "hello": "Hello! How can I assist you today?",
-                        "courses": "We offer various courses including AI, Web Dev, and more!",
-                        "events": "Upcoming events are listed on the Campus Portal.",
-                        "bye": "Goodbye! Have a great day!",
-                        "hi": "hello",
-                        "great": "You're Welcome ! , feel free to ask anything",
-                        "thanks": "You're Welcome ! , feel free to ask anything",
-                        "notes": "You can create, edit, and manage your notes easily using our Notes Manager.",
-                        "save note": "To save a note, just type it and click the save button!",
-                        "delete note": "You can delete a note by clicking on the delete icon next to it.",
-                        "edit note": "Click on the note you want to edit, make changes, and save.",
-                        "search notes": "Use the search bar to find specific notes instantly!",
-                        "export notes": "You can export your notes as a PDF or text file for easy access.",
-                        "share notes": "You can share notes via email or generate a shareable link.",
-                        "backup notes": "Your notes are automatically backed up to prevent data loss.",
-                        "dark mode": "You can switch to dark mode for a better reading experience.",
-                        "sync notes": "Your notes sync across all your devices when logged in.",
-                        "help": "Need help with the Notes Manager? Visit our Help section for FAQs and guides."
-
-                    };
-                    return responses[input.toLowerCase()] || "I'm not sure. Try asking something else!";
-                }
-            </script>
-     <section class="contact" id="contact">
-                <div class="contact-container">
-                    <div class="contact-info">
-                        <p><strong>Email:</strong> notesmanagement@gmail.com</p>
-                        <p><strong>Phone:</strong> +91 8893756389</p>
-                        <p><strong>Address:</strong> Chitkara University , Punjab</p>
-                        <p>Join our Whatsapp <a href="https://wa.me/yourphonenumber" target="_blank">
-                                <i class='bx bxl-whatsapp'></i>
-                            </a></p>
-                    </div>
-                    <form class="contact-form">
-                        <h2>FAQ Corner</h2>
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" required></textarea>
-                        <button type="submit">Send Message</button>
-                    </form>
+            function getBotResponse(input) {
+                input = input.toLowerCase();
+                let responses = {
+                    "hello": "Hello! How can I assist you today?",
+                    "courses": "We offer various courses including AI, Web Dev, and more!",
+                    "events": "Upcoming events are listed on the Campus Portal.",
+                    "bye": "Goodbye! Have a great day!",
+                    "hi": "hello",
+                    "great": "You're Welcome ! , feel free to ask anything",
+                    "thanks": "You're Welcome ! , feel free to ask anything",
+                    "notes": "You can create, edit, and manage your notes easily using our Notes Manager.",
+                    "save note": "To save a note, just type it and click the save button!",
+                    "delete note": "You can delete a note by clicking on the delete icon next to it.",
+                    "edit note": "Click on the note you want to edit, make changes, and save.",
+                    "search notes": "Use the search bar to find specific notes instantly!",
+                    "export notes": "You can export your notes as a PDF or text file for easy access.",
+                    "share notes": "You can share notes via email or generate a shareable link.",
+                    "backup notes": "Your notes are automatically backed up to prevent data loss.",
+                    "dark mode": "You can switch to dark mode for a better reading experience.",
+                    "sync notes": "Your notes sync across all your devices when logged in.",
+                    "help": "Need help with the Notes Manager? Visit our Help section for FAQs and guides."
+                };
+                return responses[input] || "I'm not sure. Try asking something else!";
+            }
+        </script>
+        
+        <section class="contact" id="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p><strong>Email:</strong> notesmanagement@gmail.com</p>
+                    <p><strong>Phone:</strong> +91 8893756389</p>
+                    <p><strong>Address:</strong> Chitkara University , Punjab</p>
+                    <p>Join our Whatsapp <a href="https://wa.me/918893756389" target="_blank">
+                            <i class='bx bxl-whatsapp'></i>
+                        </a></p>
                 </div>
-            </section>
-<div class="pro-container">
-                <h1 class="pro-heading">Qualified Professors</h1>
-                <div class="pro-slider">
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Mohit Kakkar</h3>
+                <form class="contact-form" action="{{ url_for('contact') }}" method="POST">
+                    <h2>FAQ Corner</h2>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+     <!--
+        <div class="pro-container">
+            <h1 class="pro-heading">Qualified Professors</h1>
+            <div class="pro-slider">
+                <div class="pro-card">
+                   "
+                    <h3 class="pro-name">Mohit Kakkar</h3>
                         <p class="pro-subject">Engineering Mathematics</p>
                     </div>
                     <div class="pro-card">
@@ -530,7 +497,7 @@
                     font-size: 1rem;
                     color: #676767;
                 }
-            </style>
+            </style> -->
 <section class="resources-section">
                 <h2>Essential Tools for Aspiring Programmers</h2>
                 <div class="logo-scroll-container">
