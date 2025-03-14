@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
+from flask_cors import CORS
 # Initialize Flask app, database, bcrypt, and login manager
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -132,6 +133,8 @@ def page_not_found(e):
 
 with app.app_context():
     db.create_all()
+CORS(app)
+app.config['WTF_CSRF_ENABLED'] = False
 
 if __name__ == '__main__':
     app.run(debug=True)
