@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Connect</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
-    <link rel="stylesheet"
-  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="navbar">
             <div class="logo">
-                <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500;" ><i class='bx bxl-redux'></i></h2>
+                <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-weight: 500;"><i
+                        class='bx bxl-redux'></i></h2>
             </div>
             <ul id="nav-list">
                 <li><a href="#">Home</a></li>
@@ -31,14 +33,15 @@
                         </form>
                     </div>
                 </li>
-                <img  class="cross" src="/images/close-116-512.png" alt="cross">
+                <img class="cross" src="/images/close-116-512.png" alt="cross">
             </ul>
             <div class="nav-icons">
                 <img class="menuopen" src="/images/hamburger-menu-5.png" alt="menu">
             </div>
         </div>
         <div class="navtext">
-            <p>Welcome to Notes Manager – Organize Your Ideas with Ease! . Your mind is powerful, but a note remembers everything</p>
+            <p>Welcome to Notes Manager – Organize Your Ideas with Ease! . Your mind is powerful, but a note remembers
+                everything</p>
         </div>
 
 
@@ -53,8 +56,9 @@
                 justify-content: center;
                 height: 100vh;
                 background-color: black;
-                overflow: hidden; 
+                overflow: hidden;
             }
+
             .fullscreen-text {
                 color: white;
                 font-size: 5rem;
@@ -62,9 +66,9 @@
                 text-align: center;
                 transition: transform 0.5s ease-out;
                 transform: scale(1);
-                width: auto; 
+                width: auto;
                 white-space: nowrap;
-                margin-top: 50px; 
+                margin-top: 50px;
             }
 
             @media (max-width: 768px) {
@@ -76,127 +80,131 @@
         </style>
 
 
-    <script>
-    document.addEventListener("scroll", function () {
-        let introText = document.querySelector(".fullscreen-text");
-        let notesSection = document.querySelector("#notes");
-    
-        let scrollPosition = window.scrollY;
-        let introHeight = introText.offsetHeight;
-        let notesPosition = notesSection.offsetTop;
-    
-        if (scrollPosition < notesPosition - introHeight) {
-            let scaleFactor = 1 + scrollPosition / 600; 
-            let translateY = scrollPosition / 7; 
-            introText.style.transform = `scale(${Math.min(scaleFactor, 2)}) translateY(${translateY}px)`;
-        } else {
-            introText.style.transform = "scale(2) translateY(80px)"; 
-        }
-    });
-    </script>
-    
-       
+        <script>
+            document.addEventListener("scroll", function () {
+                let introText = document.querySelector(".fullscreen-text");
+                let notesSection = document.querySelector("#notes");
+
+                let scrollPosition = window.scrollY;
+                let introHeight = introText.offsetHeight;
+                let notesPosition = notesSection.offsetTop;
+
+                if (scrollPosition < notesPosition - introHeight) {
+                    let scaleFactor = 1 + scrollPosition / 600;
+                    let translateY = scrollPosition / 7;
+                    introText.style.transform = `scale(${Math.min(scaleFactor, 2)}) translateY(${translateY}px)`;
+                } else {
+                    introText.style.transform = "scale(2) translateY(80px)";
+                }
+            });
+        </script>
+
+
 
         <section class="notes" id="notes">
-        <div class="card-container">
-            <h1>Stay organized with the latest updates to your notes management system!</h1>
-            <div class="cards">
+            <div class="card-container">
+                <h1>Stay organized with the latest updates to your notes management system!</h1>
+                <div class="cards">
 
 
 
-                <a href="/c_programming.html" >
-                 <div style="background: black;" class="card" >
-                    <h1 style="color: white;">C Programming</h1>
-                    <p style="color: white;">Master the fundamentals of C – the foundation of modern programming!</p>
-                    <img src="/images/c.jpg" alt="C programming">
-                 </div>
-                 </a>
+                    <a href="/c_programming.html">
+                        <div style="background: black;" class="card">
+                            <h1 style="color: white;">C Programming</h1>
+                            <p style="color: white;">Master the fundamentals of C – the foundation of modern
+                                programming!</p>
+                            <img src="/images/c.jpg" alt="C programming">
+                        </div>
+                    </a>
 
 
 
-                 <a href="/operating_system.html">
-                 <div class="card">
-                    <h1>Operating System </h1>
-                    <p>Master the core concepts of multitasking, memory management, and process scheduling in Operating Systems</p>
-                    <img src="/images/operating system.jpg" alt="operating system">
-                 </div>
-                 </a>
+                    <a href="/operating_system.html">
+                        <div class="card">
+                            <h1>Operating System </h1>
+                            <p>Master the core concepts of multitasking, memory management, and process scheduling in
+                                Operating Systems</p>
+                            <img src="/images/operating system.jpg" alt="operating system">
+                        </div>
+                    </a>
 
 
 
-                 <a href="/scm.html">
-                 <div style="background: black;" class="card">
-                    <h1 style="color: white;" >SCM</h1>
-                    <p style="color: white;">Efficiently track, manage, and collaborate on code with powerful version control systems</p>
-                    <img style="height: 180px;" src="/images/git.jpg" alt="scm">
-                 </div>
-                 </a>
+                    <a href="/scm.html">
+                        <div style="background: black;" class="card">
+                            <h1 style="color: white;">SCM</h1>
+                            <p style="color: white;">Efficiently track, manage, and collaborate on code with powerful
+                                version control systems</p>
+                            <img style="height: 180px;" src="/images/git.jpg" alt="scm">
+                        </div>
+                    </a>
 
 
 
-                 <a href="/deca.html">
-                 <div  class="card">
-                    <h1>DECA</h1>
-                    <p>Unraveling the mysteries of the universe, one equation at a time</p>
-                    <img src="/images/deca1.jpg" alt="DECA">
+                    <a href="/deca.html">
+                        <div class="card">
+                            <h1>DECA</h1>
+                            <p>Unraveling the mysteries of the universe, one equation at a time</p>
+                            <img src="/images/deca1.jpg" alt="DECA">
+                        </div>
+                    </a>
+
+
+
+                    <a href="/dent.html">
+                        <div class="card">
+                            <h1>DE & T</h1>
+                            <p>Differential equations and transformations </p>
+                            <img src="/images/DENT.jpg" alt="de%t">
+                        </div>
+                    </a>
+
+
+
+                    <a href="/python.html">
+                        <div class="card">
+                            <h1>Python</h1>
+                            <p>Problem Solving Using Python Programming</p>
+                            <img src="/images/python.png" alt="Python">
+                        </div>
+                    </a>
+
+
+
+                    <a href="/frontend_engineering.html">
+                        <div style="background: black;" class="card">
+                            <h1 style="color: white;">Frontend Engineering</h1>
+                            <p style="color: white;">Bringing designs to life with the power of HTML, CSS, and
+                                JavaScript!</p>
+                            <img src="/images/fee.jpg" alt="FEE">
+                        </div>
+                    </a>
+
+
+
+                    <a href="/mcp.html">
+                        <div class="card">
+                            <h1>MCP</h1>
+                            <p>Modern Computational Physics </p>
+                            <img src="/images/mcp.jpg" alt="MCP">
+                        </div>
+                    </a>
+
+
+
+                    <a href="/casa.html">
+                        <div style="background: black;" class="card">
+                            <h1 style="color: white;">CASA</h1>
+                            <p style="color: white;">Calculus And Statical Analysis </p>
+                            <img src="/images/casa2.avif" alt="CASA">
+                        </div>
+                    </a>
+
+
+
+
                 </div>
-                </a>
-
-
-
-                <a href="/dent.html">
-                <div class="card">
-                    <h1 >DE & T</h1>
-                    <p>Differential equations and transformations </p>
-                    <img src="/images/DENT.jpg" alt="de%t">
-                </div>
-                </a>
-
-
-
-                <a href="/python.html">
-                    <div class="card">
-                        <h1>Python</h1>
-                        <p>Problem Solving Using Python Programming</p>
-                        <img src="/images/python.png" alt="Python">
-                    </div>
-                </a>
-
-
-
-                <a href="/frontend_engineering.html">
-                    <div style="background: black;" class="card">
-                        <h1 style="color: white;">Frontend Engineering</h1>
-                        <p style="color: white;">Bringing designs to life with the power of HTML, CSS, and JavaScript!</p>
-                        <img src="/images/fee.jpg" alt="FEE">
-                    </div>
-                </a>
-
-
-
-                <a href="/mcp.html">
-                    <div class="card">
-                        <h1 >MCP</h1>
-                        <p>Modern Computational Physics </p>
-                        <img src="/images/mcp.jpg" alt="MCP">
-                    </div>
-                </a>
-
-
-
-                <a href="/casa.html">
-                    <div style="background: black;"  class="card" >
-                        <h1 style="color: white;">CASA</h1>
-                        <p style="color: white;">Calculus And Statical Analysis </p>
-                        <img src="/images/casa2.avif" alt="CASA">
-                    </div>
-                </a>
-                
-
-
-                
             </div>
-        </div>
         </section>
 
 
@@ -207,7 +215,7 @@
         <div class="text">
             <h1>Your Notes, Your Way - Organized and Always Accessible .</h1>
         </div>
-        
+
 
 
 
@@ -217,553 +225,510 @@
 
         <div class="mascot-container">
             <div class="mascot">
-              <img src="/images/mascot.jpg" alt="Campus Mascot">
+                <img src="/images/mascot.jpg" alt="Campus Mascot">
             </div>
             <div class="chat-container">
-              <div class="chat-header">EduChat</div>
-              <div class="chat-box" id="chatBox">
-                <div class="bot-message">Hi! How can I help you?</div>
-              </div>
-              <div class="chat-input">
-                <input type="text" id="userInput" placeholder="Type a message...">
-                <button onclick="sendMessage()">Send</button>
-              </div>
-            </div>
-          </div>
-        
-        <style>
-            .mascot-container {
-              margin-top: 40px;
-              display: flex;
-              align-items: center;
-              gap: 20px;
-              max-width: 1200px;
-              width: 100%;
-              padding: 20px;
-            }
-            .mascot {
-              flex: 1;
-              text-align: center;
-            }
-        
-            .mascot img {
-              max-width: 60%;
-              height: auto;
-            }
-            .chat-container {
-              flex: 1;
-              max-width: 350px;
-              height: 500px;
-              background: white;
-              border-radius: 15px;
-              box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-              display: flex;
-              flex-direction: column;
-              overflow: hidden;
-            }
-        
-            .chat-header {
-              background: black;
-              color: white;
-              padding: 15px;
-              text-align: center;
-              font-weight: bold;
-            }
-        
-            .chat-box {
-              flex: 1;
-              padding: 10px;
-              overflow-y: auto;
-              display: flex;
-              flex-direction: column;
-            }
-        
-            .user-message, .bot-message {
-              padding: 8px 12px;
-              border-radius: 10px;
-              margin: 5px;
-              max-width: 70%;
-            }
-        
-            .user-message {
-              background: #202121;
-              color: white;
-              align-self: flex-end;
-            }
-        
-            .bot-message {
-              background: #e0e0e0;
-              color: black;
-            }
-        
-            .chat-input {
-              display: flex;
-              padding: 10px;
-              background: white;
-              border-top: 1px solid #ddd;
-            }
-        
-            .chat-input input {
-              flex: 1;
-              padding: 8px;
-              border: none;
-              border-radius: 5px;
-              outline: none;
-            }
-        
-            .chat-input button {
-              margin-left: 10px;
-              padding: 8px 12px;
-              background: black;
-              color: white;
-              border: none;
-              border-radius: 5px;
-              cursor: pointer;
-            }
-            .chat-input button:hover{
-              background-color: #b0b0b0;
-              transition:0.2s ease;
-            }
-            @media (min-width: 1024px) { 
-                .mascot img {
-                max-width: 50%; 
-            }
-          }
-            @media (max-width: 768px) {
-              .container {
-                flex-direction: column;
-                align-items: center;
-              }
-        
-              .mascot {
-                order: -1; 
-                margin-bottom: 20px;
-              }
-        
-              .chat-container {
-                max-width: 100%;
-              }
-            }
-          </style>
-        </head>
-        <body>
-
-        
-          <script>
-            function sendMessage() {
-              let userInput = document.getElementById("userInput").value;
-              let chatBox = document.getElementById("chatBox");
-              if (userInput.trim() === "") return;
-        
-              let userMessage = `<div class='user-message'>${userInput}</div>`;
-              chatBox.innerHTML += userMessage;
-              document.getElementById("userInput").value = "";
-        
-              setTimeout(() => {
-                let botReply = `<div class='bot-message'>${getBotResponse(userInput)}</div>`;
-                chatBox.innerHTML += botReply;
-                chatBox.scrollTop = chatBox.scrollHeight;
-              }, 1000);
-            }
-        
-            function getBotResponse(input) {
-              let responses = {
-                "hello": "Hello! How can I assist you today?",
-                "courses": "We offer various courses including AI, Web Dev, and more!",
-                "events": "Upcoming events are listed on the Campus Portal.",
-                "bye": "Goodbye! Have a great day!",
-                "hi":"hello",
-                "great":"You're Welcome ! , feel free to ask anything",
-                "thanks":"You're Welcome ! , feel free to ask anything",
-                "notes": "You can create, edit, and manage your notes easily using our Notes Manager.",
-        "save note": "To save a note, just type it and click the save button!",
-        "delete note": "You can delete a note by clicking on the delete icon next to it.",
-        "edit note": "Click on the note you want to edit, make changes, and save.",
-        "search notes": "Use the search bar to find specific notes instantly!",
-        "export notes": "You can export your notes as a PDF or text file for easy access.",
-        "share notes": "You can share notes via email or generate a shareable link.",
-        "backup notes": "Your notes are automatically backed up to prevent data loss.",
-        "dark mode": "You can switch to dark mode for a better reading experience.",
-        "sync notes": "Your notes sync across all your devices when logged in.",
-        "help": "Need help with the Notes Manager? Visit our Help section for FAQs and guides."
-    
-              };
-              return responses[input.toLowerCase()] || "I'm not sure. Try asking something else!";
-            }
-          </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="contact" id="contact">
-  <div class="contact-container">
-      <div class="contact-info">
-          <p><strong>Email:</strong> notesmanagement@gmail.com</p>
-          <p><strong>Phone:</strong> +91 8893756389</p>
-          <p><strong>Address:</strong> Chitkara University , Punjab</p>
-          <p>Join our Whatsapp <a href="https://wa.me/yourphonenumber" target="_blank">
-              <i class='bx bxl-whatsapp'></i>
-          </a></p>
-      </div>
-      <form class="contact-form">
-        <h2>FAQ Corner</h2>
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit">Send Message</button>
-      </form>
-  </div>
-</section>
-
-
-
-
-
-        <div class="pro-container">
-            <h1 class="pro-heading">Qualified Professors</h1>
-            <div class="pro-slider">
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Mohit Kakkar</h3>
-                <p class="pro-subject">Engineering Mathematics</p>
-              </div>
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Monika Sethi</h3>
-                <p class="pro-subject">Operating System</p>
-              </div>
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Renu Popli</h3>
-                <p class="pro-subject">SCM</p>
-              </div>
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Chandra Prabha</h3>
-                <p class="pro-subject">Python / C</p>
-              </div>
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Ekta Thakur</h3>
-                <p class="pro-subject">Deca</p>
-              </div>
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Neha Sharma</h3>
-                <p class="pro-subject">Frontend Engineering</p>
-              </div>
-              <div class="pro-card">
-                <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                <h3 class="pro-name">Shivani Punj</h3>
-                <p class="pro-subject">MCP</p>
-              </div>
-            </div>
-          </div>
-         
-
-          <style>
-.pro-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-.pro-heading {
-  margin-top: 60px;;
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #ff6f61;
-}
-.pro-slider {
-  display: flex;
-  overflow-x: auto;
-  gap: 20px;
-  padding-bottom: 20px; 
-}
-.pro-slider::-webkit-scrollbar {
-  display: none;
-}
-.pro-card {
-  flex: 0 0 auto;
-  width: 250px;
-  height: 350px; 
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-}
-
-.pro-card:hover {
-    cursor:pointer;
-}
-.pro-image {
-  width: 120px;
-  height: 120px; 
-  border-radius: 50%;
-  margin-bottom: 20px; 
-  object-fit: cover;
-}
-.pro-name {
-  font-size: 1.5rem;
-  margin-bottom: 15px; 
-  color:black;
-}
-
-.pro-subject {
-  font-size: 1rem;
-  color: #676767;
-}
-  </style>
-
-
-
-
-
-
-
-<section class="resources-section">
-  <h2>Essential Tools for Aspiring Programmers</h2>
-  <div class="logo-scroll-container">
-      <div class="logo-scroll-wrapper">
-          <div class="logo-scroll">
-              <a href="https://leetcode.com" target="_blank">
-                  <img src="/images/leetcode.webp" alt="LeetCode" class="circular-logo">
-              </a>
-              <a href="https://github.com" target="_blank">
-                  <img src="/images/github.webp" alt="GitHub" class="circular-logo">
-              </a>
-              <a href="https://stackoverflow.com" target="_blank">
-                  <img src="/images/stack_overflow.webp" alt="Stack Overflow" class="circular-logo">
-              </a>
-              <a href="https://www.geeksforgeeks.org" target="_blank">
-                  <img src="/images/gfg.svg" alt="GeeksforGeeks" class="circular-logo">
-              </a>
-              <a href="https://www.hackerrank.com" target="_blank">
-                  <img src="/images/hackerrank.webp" alt="HackerRank" class="circular-logo">
-              </a>
-              <a href="https://www.kaggle.com" target="_blank">
-                  <img src="/images/kaggle.webp" alt="Kaggle" class="circular-logo">
-              </a>
-              <a href="https://www.freecodecamp.org" target="_blank">
-                  <img src="/images/free_code_Camp.webp" alt="freeCodeCamp" class="circular-logo">
-              </a>
-          </div>
-      </div>
-  </div>
-</section>
-<style>
- .resources-section {
-    padding: 20px;
-    margin: 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-}
-
-.resources-section h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
-.logo-scroll-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    width: 100%;
-    overflow: hidden;
-}
-
-.logo-scroll-wrapper {
-    width: 100%;
-    max-width: 1200px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    white-space: nowrap;
-    padding: 10px 0; 
-}
-
-.logo-scroll {
-    display: inline-block;
-    text-align: center; 
-}
-
-.logo-scroll a {
-    display: inline-block;
-    margin: 0 15px; 
-    text-decoration: none;
-}
-
-.circular-logo {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%; 
-    object-fit: cover; 
-    transition: transform 0.3s ease;
-}
-
-.circular-logo:hover {
-    transform: scale(1.04); 
-}
-</style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="menu-items">
-            <div class="menu-list">
-                <ul class="footer-column">
-                    <li><h5>Quick Links</h5></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#notes">Notes</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <ul class="footer-column">
-                    <li><h5>Subjects</h5></li>
-                <li><a href="#">C Programming</a></li>
-                <li><a href="#">Operating System</a></li>
-                <li><a href="#">Source Code Management</a></li>
-                <li><a href="#">DECA</a></li>
-                <li><a href="#">DE & T</a></li>
-                <li><a href="#">CASA</a></li>
-                <li><a href="#">Python</a></li>
-                <li><a href="#">Frontend Engineering</a></li>
-                <li><a href="#">MCP</a></li>
-                </ul>
-                <ul class="footer-column">
-                    <li><h5>Follow Us</h5></li>
-                    <li>
-                        <a href="https://www.instagram.com/yourprofile" target="_blank">
-                            <i class='bx bxl-instagram'></i> Instagram
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/yourprofile" target="_blank">
-                            <i class='bx bxl-twitter'></i> Twitter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/yourphonenumber" target="_blank">
-                            <i class='bx bxl-whatsapp'></i> WhatsApp
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/yourprofile" target="_blank">
-                            <i class='bx bxl-github'></i> GitHub
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="footer">
-                <p>© 2025 Notes Manager. All rights reserved.</p>
+                <div class="chat-header">EduChat</div>
+                <div class="chat-box" id="chatBox">
+                    <div class="bot-message">Hi! How can I help you?</div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="Type a message...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
             </div>
         </div>
+
+        <style>
+            .mascot-container {
+                margin-top: 40px;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                max-width: 1200px;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .mascot {
+                flex: 1;
+                text-align: center;
+            }
+
+            .mascot img {
+                max-width: 60%;
+                height: auto;
+            }
+
+            .chat-container {
+                flex: 1;
+                max-width: 350px;
+                height: 500px;
+                background: white;
+                border-radius: 15px;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+            }
+
+            .chat-header {
+                background: black;
+                color: white;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .chat-box {
+                flex: 1;
+                padding: 10px;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .user-message,
+            .bot-message {
+                padding: 8px 12px;
+                border-radius: 10px;
+                margin: 5px;
+                max-width: 70%;
+            }
+
+            .user-message {
+                background: #202121;
+                color: white;
+                align-self: flex-end;
+            }
+
+            .bot-message {
+                background: #e0e0e0;
+                color: black;
+            }
+
+            .chat-input {
+                display: flex;
+                padding: 10px;
+                background: white;
+                border-top: 1px solid #ddd;
+            }
+
+            .chat-input input {
+                flex: 1;
+                padding: 8px;
+                border: none;
+                border-radius: 5px;
+                outline: none;
+            }
+
+            .chat-input button {
+                margin-left: 10px;
+                padding: 8px 12px;
+                background: black;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .chat-input button:hover {
+                background-color: #b0b0b0;
+                transition: 0.2s ease;
+            }
+
+            @media (min-width: 1024px) {
+                .mascot img {
+                    max-width: 50%;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .container {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .mascot {
+                    order: -1;
+                    margin-bottom: 20px;
+                }
+
+                .chat-container {
+                    max-width: 100%;
+                }
+            }
+        </style>
+        </head>
+
+        <body>
+
+
+            <script>
+                function sendMessage() {
+                    let userInput = document.getElementById("userInput").value;
+                    let chatBox = document.getElementById("chatBox");
+                    if (userInput.trim() === "") return;
+
+                    let userMessage = `<div class='user-message'>${userInput}</div>`;
+                    chatBox.innerHTML += userMessage;
+                    document.getElementById("userInput").value = "";
+
+                    setTimeout(() => {
+                        let botReply = `<div class='bot-message'>${getBotResponse(userInput)}</div>`;
+                        chatBox.innerHTML += botReply;
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    }, 1000);
+                }
+
+                function getBotResponse(input) {
+                    let responses = {
+                        "hello": "Hello! How can I assist you today?",
+                        "courses": "We offer various courses including AI, Web Dev, and more!",
+                        "events": "Upcoming events are listed on the Campus Portal.",
+                        "bye": "Goodbye! Have a great day!",
+                        "hi": "hello",
+                        "great": "You're Welcome ! , feel free to ask anything",
+                        "thanks": "You're Welcome ! , feel free to ask anything",
+                        "notes": "You can create, edit, and manage your notes easily using our Notes Manager.",
+                        "save note": "To save a note, just type it and click the save button!",
+                        "delete note": "You can delete a note by clicking on the delete icon next to it.",
+                        "edit note": "Click on the note you want to edit, make changes, and save.",
+                        "search notes": "Use the search bar to find specific notes instantly!",
+                        "export notes": "You can export your notes as a PDF or text file for easy access.",
+                        "share notes": "You can share notes via email or generate a shareable link.",
+                        "backup notes": "Your notes are automatically backed up to prevent data loss.",
+                        "dark mode": "You can switch to dark mode for a better reading experience.",
+                        "sync notes": "Your notes sync across all your devices when logged in.",
+                        "help": "Need help with the Notes Manager? Visit our Help section for FAQs and guides."
+
+                    };
+                    return responses[input.toLowerCase()] || "I'm not sure. Try asking something else!";
+                }
+            </script>
+     <section class="contact" id="contact">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> notesmanagement@gmail.com</p>
+                        <p><strong>Phone:</strong> +91 8893756389</p>
+                        <p><strong>Address:</strong> Chitkara University , Punjab</p>
+                        <p>Join our Whatsapp <a href="https://wa.me/yourphonenumber" target="_blank">
+                                <i class='bx bxl-whatsapp'></i>
+                            </a></p>
+                    </div>
+                    <form class="contact-form">
+                        <h2>FAQ Corner</h2>
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+                </div>
+            </section>
+<div class="pro-container">
+                <h1 class="pro-heading">Qualified Professors</h1>
+                <div class="pro-slider">
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Mohit Kakkar</h3>
+                        <p class="pro-subject">Engineering Mathematics</p>
+                    </div>
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Monika Sethi</h3>
+                        <p class="pro-subject">Operating System</p>
+                    </div>
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Renu Popli</h3>
+                        <p class="pro-subject">SCM</p>
+                    </div>
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Chandra Prabha</h3>
+                        <p class="pro-subject">Python / C</p>
+                    </div>
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Ekta Thakur</h3>
+                        <p class="pro-subject">Deca</p>
+                    </div>
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Neha Sharma</h3>
+                        <p class="pro-subject">Frontend Engineering</p>
+                    </div>
+                    <div class="pro-card">
+                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                        <h3 class="pro-name">Shivani Punj</h3>
+                        <p class="pro-subject">MCP</p>
+                    </div>
+                </div>
+            </div>
+            <style>
+                .pro-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 20px;
+                }
+
+                .pro-heading {
+                    margin-top: 60px;
+                    ;
+                    text-align: center;
+                    font-size: 2.5rem;
+                    margin-bottom: 20px;
+                    color: #ff6f61;
+                }
+
+                .pro-slider {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 20px;
+                    padding-bottom: 20px;
+                }
+
+                .pro-slider::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .pro-card {
+                    flex: 0 0 auto;
+                    width: 250px;
+                    height: 350px;
+                    background-color: white;
+                    border-radius: 10px;
+                    padding: 20px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    text-align: center;
+                    transition: transform 0.3s ease;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .pro-card:hover {
+                    cursor: pointer;
+                }
+
+                .pro-image {
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
+                    margin-bottom: 20px;
+                    object-fit: cover;
+                }
+
+                .pro-name {
+                    font-size: 1.5rem;
+                    margin-bottom: 15px;
+                    color: black;
+                }
+
+                .pro-subject {
+                    font-size: 1rem;
+                    color: #676767;
+                }
+            </style>
+<section class="resources-section">
+                <h2>Essential Tools for Aspiring Programmers</h2>
+                <div class="logo-scroll-container">
+                    <div class="logo-scroll-wrapper">
+                        <div class="logo-scroll">
+                            <a href="https://leetcode.com" target="_blank">
+                                <img src="/images/leetcode.webp" alt="LeetCode" class="circular-logo">
+                            </a>
+                            <a href="https://github.com" target="_blank">
+                                <img src="/images/github.webp" alt="GitHub" class="circular-logo">
+                            </a>
+                            <a href="https://stackoverflow.com" target="_blank">
+                                <img src="/images/stack_overflow.webp" alt="Stack Overflow" class="circular-logo">
+                            </a>
+                            <a href="https://www.geeksforgeeks.org" target="_blank">
+                                <img src="/images/gfg.svg" alt="GeeksforGeeks" class="circular-logo">
+                            </a>
+                            <a href="https://www.hackerrank.com" target="_blank">
+                                <img src="/images/hackerrank.webp" alt="HackerRank" class="circular-logo">
+                            </a>
+                            <a href="https://www.kaggle.com" target="_blank">
+                                <img src="/images/kaggle.webp" alt="Kaggle" class="circular-logo">
+                            </a>
+                            <a href="https://www.freecodecamp.org" target="_blank">
+                                <img src="/images/free_code_Camp.webp" alt="freeCodeCamp" class="circular-logo">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <style>
+                .resources-section {
+                    padding: 20px;
+                    margin: 20px;
+                    background-color: #f9f9f9;
+                    text-align: center;
+                }
+
+                .resources-section h2 {
+                    margin-bottom: 20px;
+                    font-size: 24px;
+                    color: #333;
+                }
+
+                .logo-scroll-container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    overflow: hidden;
+                }
+
+                .logo-scroll-wrapper {
+                    width: 100%;
+                    max-width: 1200px;
+                    overflow-x: auto;
+                    scroll-behavior: smooth;
+                    white-space: nowrap;
+                    padding: 10px 0;
+                }
+
+                .logo-scroll {
+                    display: inline-block;
+                    text-align: center;
+                }
+
+                .logo-scroll a {
+                    display: inline-block;
+                    margin: 0 15px;
+                    text-decoration: none;
+                }
+
+                .circular-logo {
+                    height: 80px;
+                    width: 80px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+
+                .circular-logo:hover {
+                    transform: scale(1.04);
+                }
+            </style>
+<div class="menu-items">
+                <div class="menu-list">
+                    <ul class="footer-column">
+                        <li>
+                            <h5>Quick Links</h5>
+                        </li>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#notes">Notes</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <ul class="footer-column">
+                        <li>
+                            <h5>Subjects</h5>
+                        </li>
+                        <li><a href="#">C Programming</a></li>
+                        <li><a href="#">Operating System</a></li>
+                        <li><a href="#">Source Code Management</a></li>
+                        <li><a href="#">DECA</a></li>
+                        <li><a href="#">DE & T</a></li>
+                        <li><a href="#">CASA</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Frontend Engineering</a></li>
+                        <li><a href="#">MCP</a></li>
+                    </ul>
+                    <ul class="footer-column">
+                        <li>
+                            <h5>Follow Us</h5>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/yourprofile" target="_blank">
+                                <i class='bx bxl-instagram'></i> Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/yourprofile" target="_blank">
+                                <i class='bx bxl-twitter'></i> Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/yourphonenumber" target="_blank">
+                                <i class='bx bxl-whatsapp'></i> WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/yourprofile" target="_blank">
+                                <i class='bx bxl-github'></i> GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer">
+                    <p>© 2025 Notes Manager. All rights reserved.</p>
+                </div>
+            </div>
     </div>
     <script>
-      let nav_list = document.getElementById('nav-list')
-      let openMenu = document.querySelector('.menuopen')
-      let cross = document.querySelector('.cross')
-      openMenu.addEventListener('click',()=>{
-        nav_list.style.opacity = '100%'
-        openMenu.style.display ='none'
-      })
-      cross.addEventListener('click',()=>{
-        nav_list.style.opacity = '0%';
-        setTimeout(()=>{
-            openMenu.style.display ='block'
-        },400)
-      })
+        let nav_list = document.getElementById('nav-list')
+        let openMenu = document.querySelector('.menuopen')
+        let cross = document.querySelector('.cross')
+        openMenu.addEventListener('click', () => {
+            nav_list.style.opacity = '100%'
+            openMenu.style.display = 'none'
+        })
+        cross.addEventListener('click', () => {
+            nav_list.style.opacity = '0%';
+            setTimeout(() => {
+                openMenu.style.display = 'block'
+            }, 400)
+        })
     </script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const cards = document.querySelectorAll(".card");
-    
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
-    
-        cards.forEach((card) => {
-            observer.observe(card);
-        });
-    });
-    </script>
-    
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-        const textSection = document.querySelector(".text");
-    
-        const observer = new IntersectionObserver(
-            (entries, observer) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("show");
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.2 }
-        );
-    
-        observer.observe(textSection);
-    });
+            const cards = document.querySelectorAll(".card");
+
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 }
+            );
+
+            cards.forEach((card) => {
+                observer.observe(card);
+            });
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const textSection = document.querySelector(".text");
+
+            const observer = new IntersectionObserver(
+                (entries, observer) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("show");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 }
+            );
+
+            observer.observe(textSection);
+        });
     </script>
 
 </body>
+
 </html>
