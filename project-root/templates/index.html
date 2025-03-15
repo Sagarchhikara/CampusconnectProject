@@ -33,7 +33,7 @@
                         </form>
                     </div>
                 </li>
-                
+
             </ul>
             <div class="nav-icons">
                 <img class="menuopen" src="{{ url_for('static', filename='images/hamburger-menu-5.png') }}" alt="menu">
@@ -122,7 +122,8 @@
                             <h1>Operating System </h1>
                             <p>Master the core concepts of multitasking, memory management, and process scheduling in
                                 Operating Systems</p>
-                            <img src="{{ url_for('static', filename='images/operating system.jpg') }}" alt="operating system">
+                            <img src="{{ url_for('static', filename='images/operating system.jpg') }}"
+                                alt="operating system">
                         </div>
                     </a>
 
@@ -131,7 +132,8 @@
                             <h1 style="color: white;">SCM</h1>
                             <p style="color: white;">Efficiently track, manage, and collaborate on code with powerful
                                 version control systems</p>
-                            <img style="height: 180px;" src="{{ url_for('static', filename='images/git.jpg') }}" alt="scm">
+                            <img style="height: 180px;" src="{{ url_for('static', filename='images/git.jpg') }}"
+                                alt="scm">
                         </div>
                     </a>
 
@@ -371,7 +373,7 @@
                 return responses[input] || "I'm not sure. Try asking something else!";
             }
         </script>
-        
+
         <section class="contact" id="contact">
             <div class="contact-container">
                 <div class="contact-info">
@@ -391,251 +393,265 @@
                 </form>
             </div>
         </section>
-     <!--
+
         <div class="pro-container">
             <h1 class="pro-heading">Qualified Professors</h1>
             <div class="pro-slider">
                 <div class="pro-card">
-                   "
+                    "
                     <h3 class="pro-name">Mohit Kakkar</h3>
-                        <p class="pro-subject">Engineering Mathematics</p>
-                    </div>
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Monika Sethi</h3>
-                        <p class="pro-subject">Operating System</p>
-                    </div>
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Renu Popli</h3>
-                        <p class="pro-subject">SCM</p>
-                    </div>
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Chandra Prabha</h3>
-                        <p class="pro-subject">Python / C</p>
-                    </div>
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Ekta Thakur</h3>
-                        <p class="pro-subject">Deca</p>
-                    </div>
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Neha Sharma</h3>
-                        <p class="pro-subject">Frontend Engineering</p>
-                    </div>
-                    <div class="pro-card">
-                        <img src="https://via.placeholder.com/150" alt="" class="pro-image">
-                        <h3 class="pro-name">Shivani Punj</h3>
-                        <p class="pro-subject">MCP</p>
+                    <p class="pro-subject">Engineering Mathematics</p>
+                </div>
+                <div class="pro-card">
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                    <h3 class="pro-name">Monika Sethi</h3>
+                    <p class="pro-subject">Operating System</p>
+                </div>
+                <div class="pro-card">
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                    <h3 class="pro-name">Renu Popli</h3>
+                    <p class="pro-subject">SCM</p>
+                </div>
+                <div class="pro-card">
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                    <h3 class="pro-name">Chandra Prabha</h3>
+                    <p class="pro-subject">Python / C</p>
+                </div>
+                <div class="pro-card">
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                    <h3 class="pro-name">Ekta Thakur</h3>
+                    <p class="pro-subject">Deca</p>
+                </div>
+                <div class="pro-card">
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                    <h3 class="pro-name">Neha Sharma</h3>
+                    <p class="pro-subject">Frontend Engineering</p>
+                </div>
+                <div class="pro-card">
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
+                    <h3 class="pro-name">Shivani Punj</h3>
+                    <p class="pro-subject">MCP</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            .pro-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            .pro-heading {
+                margin-top: 60px;
+                ;
+                text-align: center;
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+                color: #ff6f61;
+            }
+
+            .pro-slider {
+                display: flex;
+                overflow-x: auto;
+                gap: 20px;
+                padding-bottom: 20px;
+            }
+
+            .pro-slider::-webkit-scrollbar {
+                display: none;
+            }
+
+            .pro-card {
+                flex: 0 0 auto;
+                width: 250px;
+                height: 350px;
+                background-color: white;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                text-align: center;
+                transition: transform 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pro-card:hover {
+                cursor: pointer;
+            }
+
+            .pro-image {
+                width: 120px;
+                height: 120px;
+                border-radius: 50%;
+                margin-bottom: 20px;
+                object-fit: cover;
+            }
+
+            .pro-name {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                color: black;
+            }
+
+            .pro-subject {
+                font-size: 1rem;
+                color: #676767;
+            }
+        </style>
+        <section class="resources-section">
+            <h2>Essential Tools for Aspiring Programmers</h2>
+            <div class="logo-scroll-container">
+                <div class="logo-scroll-wrapper">
+                    <div class="logo-scroll">
+                        <a href="https://leetcode.com" target="_blank">
+                            <img src="<img src=" {{ url_for('static', filename='images/leetcode.webp' ) }}"
+                                alt="LeetCode" class="circular-logo">
+
+                        </a>
+                        <a href="https://github.com" target="_blank">
+                            <img src="{{ url_for('static', filename='images/github.webp') }}" alt="GitHub"
+                                class="circular-logo">
+
+                        </a>
+                        <a href="https://stackoverflow.com" target="_blank">
+                            <img src="{{ url_for('static', filename='images/stack_overflow.webp') }}"
+                                alt="stack_overflow" class="circular-logo">
+
+                        </a>
+                        <a href="https://www.geeksforgeeks.org" target="_blank">
+                            <img src="{{ url_for('static', filename='images/gfg.svg') }}" alt="GeeksforGeeks"
+                                class="circular-logo">
+
+                        </a>
+                        <a href="https://www.hackerrank.com" target="_blank">
+                            <img src="{{ url_for('static', filename='images/hackerrank.webp') }}" alt="hackerrank"
+                                class="circular-logo">
+
+                        </a>
+                        <a href="https://www.kaggle.com" target="_blank">
+                            < <img src="{{ url_for('static', filename='images/kaggle.webp') }}" alt="kaggle"
+                                class="circular-logo">
+
+                        </a>
+                        <a href="https://www.freecodecamp.org" target="_blank">
+                            <img src="{{ url_for('static', filename='images/free_code_Camp.webp.') }}" alt="GitHub"
+                                class="circular-logo">
+
+                        </a>
                     </div>
                 </div>
             </div>
-            <style>
-                .pro-container {
-                    max-width: 1200px;
-                    margin: 0 auto;
-                    padding: 20px;
-                }
+        </section>
+        <style>
+            .resources-section {
+                padding: 20px;
+                margin: 20px;
+                background-color: #f9f9f9;
+                text-align: center;
+            }
 
-                .pro-heading {
-                    margin-top: 60px;
-                    ;
-                    text-align: center;
-                    font-size: 2.5rem;
-                    margin-bottom: 20px;
-                    color: #ff6f61;
-                }
+            .resources-section h2 {
+                margin-bottom: 20px;
+                font-size: 24px;
+                color: #333;
+            }
 
-                .pro-slider {
-                    display: flex;
-                    overflow-x: auto;
-                    gap: 20px;
-                    padding-bottom: 20px;
-                }
+            .logo-scroll-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                overflow: hidden;
+            }
 
-                .pro-slider::-webkit-scrollbar {
-                    display: none;
-                }
+            .logo-scroll-wrapper {
+                width: 100%;
+                max-width: 1200px;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                white-space: nowrap;
+                padding: 10px 0;
+            }
 
-                .pro-card {
-                    flex: 0 0 auto;
-                    width: 250px;
-                    height: 350px;
-                    background-color: white;
-                    border-radius: 10px;
-                    padding: 20px;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                    text-align: center;
-                    transition: transform 0.3s ease;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                }
+            .logo-scroll {
+                display: inline-block;
+                text-align: center;
+            }
 
-                .pro-card:hover {
-                    cursor: pointer;
-                }
+            .logo-scroll a {
+                display: inline-block;
+                margin: 0 15px;
+                text-decoration: none;
+            }
 
-                .pro-image {
-                    width: 120px;
-                    height: 120px;
-                    border-radius: 50%;
-                    margin-bottom: 20px;
-                    object-fit: cover;
-                }
+            .circular-logo {
+                height: 80px;
+                width: 80px;
+                border-radius: 50%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
 
-                .pro-name {
-                    font-size: 1.5rem;
-                    margin-bottom: 15px;
-                    color: black;
-                }
-
-                .pro-subject {
-                    font-size: 1rem;
-                    color: #676767;
-                }
-            </style> -->
-<section class="resources-section">
-                <h2>Essential Tools for Aspiring Programmers</h2>
-                <div class="logo-scroll-container">
-                    <div class="logo-scroll-wrapper">
-                        <div class="logo-scroll">
-                            <a href="https://leetcode.com" target="_blank">
-                                <img src="/images/leetcode.webp" alt="LeetCode" class="circular-logo">
-                            </a>
-                            <a href="https://github.com" target="_blank">
-                                <img src="/images/github.webp" alt="GitHub" class="circular-logo">
-                            </a>
-                            <a href="https://stackoverflow.com" target="_blank">
-                                <img src="/images/stack_overflow.webp" alt="Stack Overflow" class="circular-logo">
-                            </a>
-                            <a href="https://www.geeksforgeeks.org" target="_blank">
-                                <img src="/images/gfg.svg" alt="GeeksforGeeks" class="circular-logo">
-                            </a>
-                            <a href="https://www.hackerrank.com" target="_blank">
-                                <img src="/images/hackerrank.webp" alt="HackerRank" class="circular-logo">
-                            </a>
-                            <a href="https://www.kaggle.com" target="_blank">
-                                <img src="/images/kaggle.webp" alt="Kaggle" class="circular-logo">
-                            </a>
-                            <a href="https://www.freecodecamp.org" target="_blank">
-                                <img src="/images/free_code_Camp.webp" alt="freeCodeCamp" class="circular-logo">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <style>
-                .resources-section {
-                    padding: 20px;
-                    margin: 20px;
-                    background-color: #f9f9f9;
-                    text-align: center;
-                }
-
-                .resources-section h2 {
-                    margin-bottom: 20px;
-                    font-size: 24px;
-                    color: #333;
-                }
-
-                .logo-scroll-container {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
-                    overflow: hidden;
-                }
-
-                .logo-scroll-wrapper {
-                    width: 100%;
-                    max-width: 1200px;
-                    overflow-x: auto;
-                    scroll-behavior: smooth;
-                    white-space: nowrap;
-                    padding: 10px 0;
-                }
-
-                .logo-scroll {
-                    display: inline-block;
-                    text-align: center;
-                }
-
-                .logo-scroll a {
-                    display: inline-block;
-                    margin: 0 15px;
-                    text-decoration: none;
-                }
-
-                .circular-logo {
-                    height: 80px;
-                    width: 80px;
-                    border-radius: 50%;
-                    object-fit: cover;
-                    transition: transform 0.3s ease;
-                }
-
-                .circular-logo:hover {
-                    transform: scale(1.04);
-                }
-            </style>
-<div class="menu-items">
-                <div class="menu-list">
-                    <ul class="footer-column">
-                        <li>
-                            <h5>Quick Links</h5>
-                        </li>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#notes">Notes</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                    <ul class="footer-column">
-                        <li>
-                            <h5>Subjects</h5>
-                        </li>
-                        <li><a href="#">C Programming</a></li>
-                        <li><a href="#">Operating System</a></li>
-                        <li><a href="#">Source Code Management</a></li>
-                        <li><a href="#">DECA</a></li>
-                        <li><a href="#">DE & T</a></li>
-                        <li><a href="#">CASA</a></li>
-                        <li><a href="#">Python</a></li>
-                        <li><a href="#">Frontend Engineering</a></li>
-                        <li><a href="#">MCP</a></li>
-                    </ul>
-                    <ul class="footer-column">
-                        <li>
-                            <h5>Follow Us</h5>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/yourprofile" target="_blank">
-                                <i class='bx bxl-instagram'></i> Instagram
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/yourprofile" target="_blank">
-                                <i class='bx bxl-twitter'></i> Twitter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://wa.me/yourphonenumber" target="_blank">
-                                <i class='bx bxl-whatsapp'></i> WhatsApp
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/yourprofile" target="_blank">
-                                <i class='bx bxl-github'></i> GitHub
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="footer">
-                    <p>© 2025 Notes Manager. All rights reserved.</p>
-                </div>
+            .circular-logo:hover {
+                transform: scale(1.04);
+            }
+        </style>
+        <div class="menu-items">
+            <div class="menu-list">
+                <ul class="footer-column">
+                    <li>
+                        <h5>Quick Links</h5>
+                    </li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#notes">Notes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <ul class="footer-column">
+                    <li>
+                        <h5>Subjects</h5>
+                    </li>
+                    <li><a href="#">C Programming</a></li>
+                    <li><a href="#">Operating System</a></li>
+                    <li><a href="#">Source Code Management</a></li>
+                    <li><a href="#">DECA</a></li>
+                    <li><a href="#">DE & T</a></li>
+                    <li><a href="#">CASA</a></li>
+                    <li><a href="#">Python</a></li>
+                    <li><a href="#">Frontend Engineering</a></li>
+                    <li><a href="#">MCP</a></li>
+                </ul>
+                <ul class="footer-column">
+                    <li>
+                        <h5>Follow Us</h5>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/yourprofile" target="_blank">
+                            <i class='bx bxl-instagram'></i> Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/yourprofile" target="_blank">
+                            <i class='bx bxl-twitter'></i> Twitter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/yourphonenumber" target="_blank">
+                            <i class='bx bxl-whatsapp'></i> WhatsApp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/yourprofile" target="_blank">
+                            <i class='bx bxl-github'></i> GitHub
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <div class="footer">
+                <p>© 2025 Notes Manager. All rights reserved.</p>
+            </div>
+        </div>
     </div>
     <script>
         let nav_list = document.getElementById('nav-list')
