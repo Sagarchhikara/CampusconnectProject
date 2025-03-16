@@ -11,6 +11,10 @@ html {
 body{
 overflow-x: hidden;
 }
+p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;   
+}
 .navbar .logo{
     color: rgba(65, 65, 255, 0.721);
 }
@@ -103,6 +107,7 @@ overflow-x: hidden;
     background-color: black;
     color: darkgray;
     margin-top: 20px;
+    object-fit: cover;
     padding-bottom: 10px;
 }
 /* Fix any rogue large elements */
@@ -144,6 +149,8 @@ overflow-x: hidden;
 }
 .card p {
     margin-bottom: 20px;
+    color: white !important; /* Force white text color */
+    
 }
 .card-container{
     margin-top: 40px;
@@ -154,6 +161,14 @@ overflow-x: hidden;
     flex-wrap: wrap; 
     justify-content: space-evenly; 
     gap: 20px;
+}
+.card a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+}
+
+.card a:hover {
+    text-decoration: none;
 }
 
 

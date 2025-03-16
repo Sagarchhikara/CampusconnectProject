@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEE</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     <link rel="stylesheet"
   href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <style>
@@ -67,35 +68,64 @@
 
 .note-upload-form button:hover {
     background-color: #004494;
-}
-.uploaded-notes {
-    display: flex;
-    flex-direction: column;
+}.uploaded-notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 15px;
+    margin-top: 20px;
 }
 
 .note-item {
-    padding: 10px;
-    background-color: #f0f0f0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
     border-radius: 8px;
-    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.note-item a {
+.note-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.note-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.note-title {
+    font-size: 1rem;
+    font-weight: 600;
     color: #0056b3;
     text-decoration: none;
-    margin-right: 10px;
 }
 
-.note-item a:hover {
+.note-title:hover {
     text-decoration: underline;
 }
 
-.note-item span {
+.video-link {
+    background-color: #ff6347;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
     font-size: 0.9rem;
-    color: #555;
+    text-decoration: none;
+    transition: background-color 0.2s;
 }
 
+.video-link:hover {
+    background-color: #ff4c30;
+}
+
+.uploaded-by {
+    display: block;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 5px;
+}
 
     </style>
 </head>
@@ -143,18 +173,20 @@
     </section>
     
     <h2>Uploaded Notes</h2>
-    <div class="uploaded-notes">
-        {% for note in notes %}
-        <div class="note-item">
-            <a href="{{ note.file_path }}" target="_blank">{{ note.title }}</a>
+<div class="uploaded-notes">
+    {% for note in notes %}
+    <div class="note-item">
+        <div class="note-info">
+            <a href="{{ note.file_path }}" target="_blank" class="note-title">{{ note.title }}</a>
             {% if note.video_link %}
-                <a href="{{ note.video_link }}" target="_blank">Watch Video</a>
+                <a href="{{ note.video_link }}" target="_blank" class="video-link">🎥 Watch Video</a>
             {% endif %}
-            <span>Uploaded by: {{ note.uploaded_by }}</span>
         </div>
-        {% endfor %}
+        <span class="uploaded-by">Uploaded by: {{ note.uploaded_by }}</span>
     </div>
-    
+    {% endfor %}
+</div>
+
     <form action="{{ url_for('upload_note') }}" method="POST" enctype="multipart/form-data" class="note-upload-form">
         <input type="text" name="title" placeholder="Title" required>
         <input type="file" name="file" accept=".pdf" required>
