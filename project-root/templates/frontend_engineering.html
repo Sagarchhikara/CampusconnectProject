@@ -42,6 +42,60 @@
         #subject-introduction {
     padding-top: 80px; 
     }
+    .note-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.note-upload-form input,
+.note-upload-form button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.note-upload-form button {
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.note-upload-form button:hover {
+    background-color: #004494;
+}
+.uploaded-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.note-item {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.note-item a {
+    color: #0056b3;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.note-item a:hover {
+    text-decoration: underline;
+}
+
+.note-item span {
+    font-size: 0.9rem;
+    color: #555;
+}
+
 
     </style>
 </head>
@@ -88,24 +142,33 @@
         </div>
     </section>
     
-    <section id="flipbook-notes" class="subject-section">
-        <div class="container">
-            <h2>Handwritten Notes</h2>
-            <iframe 
-                src="https://docs.google.com/document/d/e/2PACX-1vRRDrzcU-zyizSVLBDN-V3uM4Mjv4JwoWLZDvrvAc-xZ1ZLS1IAWCw64drf4sZmrmtnwE-BEQgW18wY/pub?embedded=true" 
-                width="100%"
-                height="700px"
-                style="border: none; overflow: hidden;">
-            </iframe>
-            <br>
-            <a href="https://docs.google.com/document/d/e/2PACX-1vRRDrzcU-zyizSVLBDN-V3uM4Mjv4JwoWLZDvrvAc-xZ1ZLS1IAWCw64drf4sZmrmtnwE-BEQgW18wY/pub"
-                target="_blank" 
-                style="text-align: center; margin: 10px auto; padding: 10px 15px; background: #000; color: #fff; text-decoration: none; border-radius: 5px; width: fit-content;">
-                Open in Full Screen
-            </a>
+    <h2>Uploaded Notes</h2>
+    <div class="uploaded-notes">
+        {% for note in notes %}
+        <div class="note-item">
+            <a href="{{ note.file_path }}" target="_blank">{{ note.title }}</a>
+            {% if note.video_link %}
+                <a href="{{ note.video_link }}" target="_blank">Watch Video</a>
+            {% endif %}
+            <span>Uploaded by: {{ note.uploaded_by }}</span>
         </div>
-    </section>
+        {% endfor %}
+    </div>
     
+    <form action="{{ url_for('upload_note') }}" method="POST" enctype="multipart/form-data" class="note-upload-form">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="file" name="file" accept=".pdf" required>
+        <input type="url" name="video_link" placeholder="Video Link (Optional)">
+        <button type="submit">Upload Note</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
     
     <section id="video-lectures" class="subject-section">
         <div class="container">

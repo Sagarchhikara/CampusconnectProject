@@ -24,13 +24,8 @@
                 <li class="dropdown">
                     <a href="#">Login</a>
                     <div class="login-dropdown">
-                        <form action="{{ url_for('login') }}" method="POST">
-                            <label for="username">Roll number:</label>
-                            <input type="text" id="username" name="username" placeholder="Roll number">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" placeholder="Password">
-                            <button type="submit">Login</button>
-                        </form>
+                        <a href="{{ url_for('login') }}">Login</a>
+                        <a href="{{ url_for('signup') }}">Sign Up</a>
                     </div>
                 </li>
 
