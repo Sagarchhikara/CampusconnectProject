@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FEE</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
     <link rel="stylesheet"
   href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <style>
@@ -42,6 +43,89 @@
         #subject-introduction {
     padding-top: 80px; 
     }
+    .note-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.note-upload-form input,
+.note-upload-form button {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.note-upload-form button {
+    background-color: #0056b3;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.note-upload-form button:hover {
+    background-color: #004494;
+}.uploaded-notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.note-item {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.note-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.note-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.note-title:hover {
+    text-decoration: underline;
+}
+
+.video-link {
+    background-color: #ff6347;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.video-link:hover {
+    background-color: #ff4c30;
+}
+
+.uploaded-by {
+    display: block;
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 5px;
+}
 
     </style>
 </head>
@@ -88,24 +172,35 @@
         </div>
     </section>
     
-    <section id="flipbook-notes" class="subject-section">
-        <div class="container">
-            <h2>Handwritten Notes</h2>
-            <iframe 
-                src="https://docs.google.com/document/d/e/2PACX-1vRRDrzcU-zyizSVLBDN-V3uM4Mjv4JwoWLZDvrvAc-xZ1ZLS1IAWCw64drf4sZmrmtnwE-BEQgW18wY/pub?embedded=true" 
-                width="100%"
-                height="700px"
-                style="border: none; overflow: hidden;">
-            </iframe>
-            <br>
-            <a href="https://docs.google.com/document/d/e/2PACX-1vRRDrzcU-zyizSVLBDN-V3uM4Mjv4JwoWLZDvrvAc-xZ1ZLS1IAWCw64drf4sZmrmtnwE-BEQgW18wY/pub"
-                target="_blank" 
-                style="text-align: center; margin: 10px auto; padding: 10px 15px; background: #000; color: #fff; text-decoration: none; border-radius: 5px; width: fit-content;">
-                Open in Full Screen
-            </a>
+    <h2>Uploaded Notes</h2>
+<div class="uploaded-notes">
+    {% for note in notes %}
+    <div class="note-item">
+        <div class="note-info">
+            <a href="{{ note.file_path }}" target="_blank" class="note-title">{{ note.title }}</a>
+            {% if note.video_link %}
+                <a href="{{ note.video_link }}" target="_blank" class="video-link">🎥 Watch Video</a>
+            {% endif %}
         </div>
-    </section>
-    
+        <span class="uploaded-by">Uploaded by: {{ note.uploaded_by }}</span>
+    </div>
+    {% endfor %}
+</div>
+
+    <form action="{{ url_for('upload_note') }}" method="POST" enctype="multipart/form-data" class="note-upload-form">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="file" name="file" accept=".pdf" required>
+        <input type="url" name="video_link" placeholder="Video Link (Optional)">
+        <button type="submit">Upload Note</button>
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
     
     <section id="video-lectures" class="subject-section">
         <div class="container">

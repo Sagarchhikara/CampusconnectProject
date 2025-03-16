@@ -3,6 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from flask_cors import CORS
+import os
+from werkzeug.utils import secure_filename
+
 # Initialize Flask app, database, bcrypt, and login manager
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
@@ -25,7 +28,6 @@ def load_user(user_id):
 
 # Route for home page (login required)
 @app.route('/')
-@login_required
 def home():
     return render_template('index.html')
 
@@ -45,10 +47,10 @@ def deca():
 @app.route('/dent')
 def dent():
     return render_template('dent.html')
-
 @app.route('/frontend_engineering')
 def frontend_engineering():
-    return render_template('frontend_engineering.html')
+    notes = Note.query.filter_by(subject='Frontend Engineering').all()
+    return render_template('frontend_engineering.html', notes=notes)
 
 @app.route('/mcp')
 def mcp():
@@ -78,7 +80,9 @@ def login():
             flash('Login successful!', 'success')
             return redirect(url_for('home'))
         else:
-            flash('Invalid username or password', 'danger')
+            flash('Invalid username or password', 'error')
+            return redirect(url_for('login'))
+    
     return render_template('login.html')  # Render login page for GET requests
 
 # Route for logout
@@ -97,13 +101,13 @@ def signup():
 
         # Check if username and password are provided
         if not username or not password:
-            flash('Username and password cannot be empty!', 'danger')
+            flash('Username and password cannot be empty!', 'error')
             return redirect(url_for('signup'))
 
         # Check if username already exists
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
-            flash('Username already taken!', 'danger')
+            flash('Username already taken!', 'error')
             return redirect(url_for('signup'))
 
         # Hash password and create user
@@ -138,5 +142,49 @@ CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins for now
 
 app.config['WTF_CSRF_ENABLED'] = False
 
+class Note(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # Unique ID for each note
+    title = db.Column(db.String(200), nullable=False)  # Title of the note
+    file_path = db.Column(db.String(300), nullable=False)  # Path to uploaded PDF file
+    video_link = db.Column(db.String(300), nullable=True)  # Optional video link
+    subject = db.Column(db.String(100), nullable=False)  # Subject name
+    uploaded_by = db.Column(db.String(150), nullable=False)  # Username of the uploader
+
+    def __repr__(self):
+        return f"Note('{self.title}', '{self.subject}')"
+with app.app_context():
+    db.create_all()
+UPLOAD_FOLDER = 'static/notes'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# Ensure upload folder exists
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+@app.route('/upload_note', methods=['POST'])
+@login_required
+def upload_note():
+    title = request.form.get('title')
+    video_link = request.form.get('video_link')
+    file = request.files.get('file')
+
+    if file and title:
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(file_path)
+
+        note = Note(
+            title=title,
+            file_path=file_path,
+            video_link=video_link,
+            subject='Frontend Engineering',
+            uploaded_by=current_user.username
+        )
+        db.session.add(note)
+        db.session.commit()
+        flash('Note uploaded successfully!', 'success')
+    else:
+        flash('Please provide a title and a file!', 'error')
+
+    return redirect(url_for('frontend_engineering'))
 if __name__ == '__main__':
     app.run(debug=True)
