@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus Connect</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">-->
+    <link rel="stylesheet" href="/project-root/Static/style.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 
@@ -20,9 +21,9 @@
                 <li><a href="#notes">Notes</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="dropdown">
-                    <a href="#">Login</a>
+                    <a href="#">User</a>
                     <div class="login-dropdown">
-                        <a href="{{ url_for('login') }}">Login</a>
+                        <a href="{{ url_for('login') }}">Login</a> / 
                         <a href="{{ url_for('signup') }}">Sign Up</a>
                     </div>
                 </li>
@@ -101,23 +102,24 @@
             <div class="card-container">
                 <h1>Stay organized with the latest updates to your notes management system!</h1>
                 <div class="cards">
-
                     <a href="{{ url_for('c_programming') }}">
                         <div style="background: black;" class="card">
                             <h1 style="color: white;">C Programming</h1>
                             <p style="color: white;">Master the fundamentals of C – the foundation of modern
                                 programming!</p>
-                            <img src="{{ url_for('static', filename='project-root/Static/images/c.jpg) }}" alt="C programming">
+                                <img src="/project-root/Static/images/c.jpg">
+                            <!--<img src="{{ url_for('static', filename='project-root/Static/images/c.jpg) }}" alt="C programming">-->
                         </div>
                     </a>
 
-                   
-                        <div class="card">
-                            <h1>Operating System </h1>
-                            <p>Master the core concepts of multitasking, memory management, and process scheduling in
-                                Operating Systems</p> <a href="{{ url_for('operating_system') }}">
-                            <img src="{{ url_for('static', filename='images/operating system.jpg') }}"
-                                alt="operating system">
+                    <a href="{{ url_for('os') }}">
+                        <div style="background-color: white;" class="card">
+                            <h1 style="color: black;">Operating System </h1>
+                            <p style="color:black;">Master the core concepts of multitasking, memory management, and process scheduling in
+                                Operating Systems</p> 
+                                <img src="/project-root/Static/images/operating system.jpg" alt="operating system" >
+                            <!--<img src="{{ url_for('static', filename='images/operating system.jpg') }}"
+                                alt="operating system">-->
                         </div>
                     </a>
 
@@ -126,32 +128,36 @@
                             <h1 style="color: white;">SCM</h1>
                             <p style="color: white;">Efficiently track, manage, and collaborate on code with powerful
                                 version control systems</p>
-                            <img style="height: 180px;" src="{{ url_for('static', filename='images/git.jpg') }}"
-                                alt="scm">
+                            <img src="/project-root/Static/images/git.jpg" alt="scm">   
+                            <!--<img style="height: 180px;" src="{{ url_for('static', filename='images/git.jpg') }}"
+                                alt="scm">-->
                         </div>
                     </a>
 
                     <a href="{{ url_for('deca') }}">
                         <div class="card">
-                            <h1>DECA</h1>
-                            <p>Unraveling the mysteries of the universe, one equation at a time</p>
-                            <img src="{{ url_for('static', filename='images/deca1.jpg') }}" alt="DECA">
+                            <h1 style="color: black;">DECA</h1>
+                            <p style="color: black;">Unraveling the mysteries of the universe, one equation at a time</p>
+                            <img src="/project-root/Static/images/deca1.jpg" alt="deca">
+                            <!--<img src="{{ url_for('static', filename='images/deca1.jpg') }}" alt="DECA">-->
                         </div>
                     </a>
 
                     <a href="{{ url_for('dent') }}">
                         <div class="card">
-                            <h1>DE & T</h1>
-                            <p>Differential equations and transformations </p>
-                            <img src="{{ url_for('static', filename='images/DENT.jpg') }}" alt="de%t">
+                            <h1 style="color: black;">DE & T</h1>
+                            <p style="color: black;">Differential equations and transformations </p>
+                            <img src="/project-root/Static/images/DENT.jpg" alt="dent">
+                            <!--<img src="{{ url_for('static', filename='images/DENT.jpg') }}" alt="de%t">-->
                         </div>
                     </a>
 
                     <a href="{{ url_for('python') }}">
                         <div class="card">
-                            <h1>Python</h1>
-                            <p>Problem Solving Using Python Programming</p>
-                            <img src="{{ url_for('static', filename='images/python.png') }}" alt="Python">
+                            <h1 style="color: black;">Python</h1>
+                            <p style="color: black;">Problem Solving Using Python Programming</p>
+                            <img src="/project-root/Static/images/python.png" alt="python">
+                            <!--<img src="{{ url_for('static', filename='images/python.png') }}" alt="Python">-->
                         </div>
                     </a>
 
@@ -160,15 +166,17 @@
                             <h1 style="color: white;">Frontend Engineering</h1>
                             <p style="color: white;">Bringing designs to life with the power of HTML, CSS, and
                                 JavaScript!</p>
-                            <img src="{{ url_for('static', filename='images/fee.jpg') }}" alt="FEE">
+                                <img src="/project-root/Static/images/fee.jpg" alt="fee">
+                            <!--<img src="{{ url_for('static', filename='images/fee.jpg') }}" alt="FEE">-->
                         </div>
                     </a>
 
                     <a href="{{ url_for('mcp') }}">
                         <div class="card">
-                            <h1>MCP</h1>
-                            <p>Modern Computational Physics </p>
-                            <img src="{{ url_for('static', filename='images/mcp.jpg') }}" alt="MCP">
+                            <h1 style="color: black;">MCP</h1>
+                            <p style="color: black;">Modern Computational Physics </p>
+                            <img src="/project-root/Static/images/mcp.jpg" alt="mcp">
+                            <!--<img src="{{ url_for('static', filename='images/mcp.jpg') }}" alt="MCP">-->
                         </div>
                     </a>
 
@@ -176,7 +184,8 @@
                         <div style="background: black;" class="card">
                             <h1 style="color: white;">CASA</h1>
                             <p style="color: white;">Calculus And Statical Analysis </p>
-                            <img src="{{ url_for('static', filename='images/casa2.avif') }}" alt="CASA">
+                            <img src="/project-root/Static/images/casa2.avif" alt="casa">
+                            <!--<img src="{{ url_for('static', filename='images/casa2.avif') }}" alt="CASA">-->
                         </div>
                     </a>
 
@@ -190,7 +199,8 @@
 
         <div class="mascot-container">
             <div class="mascot">
-                <img src="{{ url_for('static', filename='images/mascot.jpg') }}" alt="Campus Mascot">
+                <img src="/project-root/Static/images/mascot.jpg" alt="mascot">
+                <!--<img src="{{ url_for('static', filename='images/mascot.jpg') }}" alt="Campus Mascot">-->
             </div>
             <div class="chat-container">
                 <div class="chat-header">EduChat</div>
@@ -392,7 +402,7 @@
             <h1 class="pro-heading">Qualified Professors</h1>
             <div class="pro-slider">
                 <div class="pro-card">
-                    "
+                    <img src="https://via.placeholder.com/150" alt="" class="pro-image">
                     <h3 class="pro-name">Mohit Kakkar</h3>
                     <p class="pro-subject">Engineering Mathematics</p>
                 </div>
@@ -500,36 +510,36 @@
                 <div class="logo-scroll-wrapper">
                     <div class="logo-scroll">
                         <a href="https://leetcode.com" target="_blank">
-                            <img src="{{ url_for('static', filename='images/leetcode.webp') }}" alt="leetcode" class="circular-logo">
+                            <img src="/project-root/Static/images/leetcode.webp" alt="leetcode" class="circular-logo">
 
                         </a>
                         <a href="https://github.com" target="_blank">
-                            <img src="{{ url_for('static', filename='images/github.webp') }}" alt="GitHub"
+                            <img src="/project-root/Static/images/github.webp" alt="GitHub"
                                 class="circular-logo">
 
                         </a>
                         <a href="https://stackoverflow.com" target="_blank">
-                            <img src="{{ url_for('static', filename='images/stack_overflow.webp') }}"
+                            <img src="/project-root/Static/images/stack_overflow.webp"
                                 alt="stack_overflow" class="circular-logo">
 
                         </a>
                         <a href="https://www.geeksforgeeks.org" target="_blank">
-                            <img src="{{ url_for('static', filename='images/gfg.svg') }}" alt="GeeksforGeeks"
+                            <img src="/project-root/Static/images/gfg.svg" alt="GeeksforGeeks"
                                 class="circular-logo">
 
                         </a>
                         <a href="https://www.hackerrank.com" target="_blank">
-                            <img src="{{ url_for('static', filename='images/hackerrank.webp') }}" alt="hackerrank"
+                            <img src="/project-root/Static/images/hackerrank.webp" alt="hackerrank"
                                 class="circular-logo">
 
                         </a>
                         <a href="https://www.kaggle.com" target="_blank">
-                            < <img src="{{ url_for('static', filename='images/kaggle.webp') }}" alt="kaggle"
+                            <img src="/project-root/Static/images/kaggle.webp" alt="kaggle"
                                 class="circular-logo">
 
                         </a>
                         <a href="https://www.freecodecamp.org" target="_blank">
-                            <img src="{{ url_for('static', filename='images/free_code_Camp.webp.') }}" alt="GitHub"
+                            <img src="/project-root/Static/images/free_code_Camp.webp" alt="free-code-camp"
                                 class="circular-logo">
 
                         </a>
@@ -591,6 +601,7 @@
                 transform: scale(1.04);
             }
         </style>
+        
         <div class="menu-items">
             <div class="menu-list">
                 <ul class="footer-column">
