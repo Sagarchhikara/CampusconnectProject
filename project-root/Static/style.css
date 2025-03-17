@@ -110,8 +110,6 @@ p{
     object-fit: cover;
     padding-bottom: 10px;
 }
-/* Fix any rogue large elements */
-
 .card img {
     height: 220px;
     transition: transform 0.9s ease-in-out;
@@ -163,12 +161,20 @@ p{
     gap: 20px;
 }
 .card a {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit color from parent */
+    text-decoration: none !important; 
+    color: inherit;
 }
 
 .card a:hover {
-    text-decoration: none;
+    text-decoration: none !important;
+}
+.card > a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.card > a:hover {
+    text-decoration: none !important;
 }
 
 
