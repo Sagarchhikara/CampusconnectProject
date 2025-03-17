@@ -168,16 +168,9 @@ p{
 .card a:hover {
     text-decoration: none !important;
 }
-.card > a {
-    text-decoration: none !important;
-    color: inherit;
-}
-
-.card > a:hover {
+a {
     text-decoration: none !important;
 }
-
-
 
 .card:hover {
     transform: scale(1.1);
