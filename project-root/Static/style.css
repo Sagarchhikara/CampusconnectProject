@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;800;900&family=Outfit:wght@100;200;500;600;900&family=Poppins:wght@300;400;500&family=Raleway:wght@600;900&display=swap');
 *{
     margin: 0;
-    padding: 0;
+    padding: 0; 
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
@@ -266,8 +266,6 @@ p{
         text-align: center;
     }
 }
-
-/* Video container styles */
 .video-container {
     display: flex;
     gap: 20px;
