@@ -31,6 +31,7 @@
             </ul>
             <div class="nav-icons">
                 <img class="menuopen" src="/project-root/Static/images/hamburger-menu-5.png" alt="menu">
+                <img class="cross" src="/project-root/Static/images/close-116-512.png" alt="close" style="display: none;">
             </div>
         </div>
         <div class="navtext">
@@ -657,64 +658,7 @@
             </div>
         </div>
     </div>
-    <script>
-        let nav_list = document.getElementById('nav-list')
-        let openMenu = document.querySelector('.menuopen')
-        let cross = document.querySelector('.cross')
-        openMenu.addEventListener('click', () => {
-            nav_list.style.opacity = '100%'
-            openMenu.style.display = 'none'
-        })
-        cross.addEventListener('click', () => {
-            nav_list.style.opacity = '0%';
-            setTimeout(() => {
-                openMenu.style.display = 'block'
-            }, 400)
-        })
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cards = document.querySelectorAll(".card");
-
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("show");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.2 }
-            );
-
-            cards.forEach((card) => {
-                observer.observe(card);
-            });
-        });
-    </script>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const textSection = document.querySelector(".text");
-
-            const observer = new IntersectionObserver(
-                (entries, observer) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("show");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                { threshold: 0.2 }
-            );
-
-            observer.observe(textSection);
-        });
-    </script>
+    
 
 </body>
 
