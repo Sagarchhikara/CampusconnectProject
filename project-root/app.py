@@ -5,6 +5,8 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from flask_cors import CORS
 import os
 from werkzeug.utils import secure_filename
+from flask import Flask, request, jsonify
+from werkzeug.security import generate_password_hash, check_password_hash
 
 # Initialize Flask app, database, bcrypt, and login manager
 app = Flask(__name__)
@@ -186,5 +188,55 @@ def upload_note():
         flash('Please provide a title and a file!', 'error')
 
     return redirect(url_for('frontend_engineering'))
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+app.config['GOOGLE_CLIENT_ID'] = os.getenv('GOOGLE_CLIENT_ID')
+app.config['GOOGLE_CLIENT_SECRET'] = os.getenv('GOOGLE_CLIENT_SECRET')
+from authlib.integrations.flask_client import OAuth
+
+oauth = OAuth(app)
+
+google = oauth.register(
+    name='google',
+    client_id=os.getenv('GOOGLE_CLIENT_ID'),
+    client_secret=os.getenv('GOOGLE_CLIENT_SECRET'),
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+    api_base_url='https://www.googleapis.com/oauth2/v1/',
+    client_kwargs={'scope': 'email profile'}
+)
+@app.route('/login/google')
+def login_google():
+    redirect_uri = url_for('authorized', _external=True)
+    return google.authorize_redirect(redirect_uri)
+
+@app.route('/login/google/callback')
+def authorized():
+    token = google.authorize_access_token()
+    user_info = google.get('userinfo').json()
+
+    if not user_info:
+        flash('Authorization failed.', 'error')
+        return redirect(url_for('login'))
+
+    # Example: Extract user info
+    username = user_info['email']
+    user = User.query.filter_by(username=username).first()
+    
+    if not user:
+        # Create new user if not exists
+        user = User(username=username, password=bcrypt.generate_password_hash('oauthuser').decode('utf-8'))
+        db.session.add(user)
+        db.session.commit()
+    
+    login_user(user)
+    flash(f'Welcome, {username}!', 'success')
+    return redirect(url_for('home'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
